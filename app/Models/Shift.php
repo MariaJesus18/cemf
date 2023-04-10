@@ -11,6 +11,6 @@ class Shift extends Model
     protected $table = "shifts";
 
     protected $fillable = [
-        'nome',
+        'name',
     ];
 }

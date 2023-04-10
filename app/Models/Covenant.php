@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Covenants extends Model
+class Covenant extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class Covenants extends Model
 
 
     protected $fillable = [
-        'nome',
-        'desconto',
+        'name',
+        'discount',
     ];
 }

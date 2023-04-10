@@ -12,6 +12,6 @@ class School extends Model
     protected $table = "schools";
 
     protected $fillable = [
-        'nome',
+        'name',
     ];
 }

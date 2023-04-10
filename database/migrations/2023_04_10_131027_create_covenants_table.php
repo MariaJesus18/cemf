@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('covenants', function (Blueprint $table) {
             $table->id();
-            $table->string("nome");
-            $table->string("desconto");
+            $table->string("name");
+            $table->string("discount");
             $table->timestamps();
         });
     }
