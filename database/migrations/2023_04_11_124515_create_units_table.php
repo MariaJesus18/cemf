@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('responsibles', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('cnpj');
@@ -28,14 +28,8 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
 
-            $table  ->bigInteger('studend_id');
-            $table->foreign('studend_id')->references('id')->on('students');
-
-            $table->bigInteger('creatoruser_id');
-            $table->foreign('creatoruser_id')->references('id')->on('users');
-
-            $table->bigInteger('editoruser_id');
-            $table->foreign('editoruser_id')->references('id')->on('users');
+            $table->bigInteger('responsible_id');
+            $table->foreign('responsible_id')->references('id')->on('responsibles');
 
             $table->timestamps();
         });
@@ -48,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responsibles');
+        Schema::dropIfExists('units');
     }
 };

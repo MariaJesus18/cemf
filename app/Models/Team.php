@@ -10,18 +10,18 @@ class Team extends Model
 {
     use HasFactory;
 
-    // public function unidade(): BelongsTo
-    // {
-    //     return $this->belongsTo(Unidade::class, 'id_Unidade');
-    // }
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(Unit::class);
+    }
 
-    // public function user(): BelongsTo
-    // {
-    //     return $this->belongsTo(User::class, 'id_Usuario ');
-    // }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected $fillable = [
-        'unidade_id',
-        'usuario_id',
+        'unit_id',
+        'user_id',
     ];
 }
