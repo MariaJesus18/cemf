@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('contract_disciplines', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('contract_id');
+            $table->foreign('contract_id')->references('id')->on('contracts');
+
+            $table->bigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+            
             $table->timestamps();
         });
     }
