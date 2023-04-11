@@ -5,13 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class School extends Model
+class Responsible extends Model
 {
     use HasFactory;
-
-    protected $table = "schools";
-
-    protected $fillable = [
-        'name',
-    ];
 }
