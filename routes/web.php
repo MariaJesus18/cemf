@@ -15,8 +15,8 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::view('/','welcome');
-Route::view('/dashboard','dashboard');
+Route::view('/', 'welcome');
+Route::view('/dashboard', 'dashboard');
 
 
 
@@ -30,5 +30,10 @@ Route::view('/dashboard','dashboard');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-require __DIR__.'/auth.php';
-require __DIR__.'/user.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/user.php';
+require __DIR__ . '/student.php';
+require __DIR__ . '/unit.php';
+require __DIR__ . '/subject.php';
+require __DIR__ . '/report.php';
+require __DIR__ . '/launch.php';
