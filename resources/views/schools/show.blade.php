@@ -13,7 +13,7 @@
     <div class="container-xxl  ">
         <div class="row justify-content-center align-items-center g-2">
             <div class="col">
-                <h1 class="float-start">Adicionar Escola</h1>
+                <h1 class="float-start">Escola</h1>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                 <input type="text"
                 class="form-control" name="name" id="" value="{{$school->name}}" required aria-describedby="helpId" placeholder="Nome da Escola">
             </div>
-            <button class="btn btn-primary">Salvar</button>        
+            <button class="btn btn-primary">Atualizar</button>        
         </div>
     </div>
 
