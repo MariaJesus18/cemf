@@ -298,8 +298,8 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="" class="menu-link">
-                        <div data-i18n="Without navbar">Ação</div>
+                      <a href="{{route('schools.index')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Escolas</div>
                       </a>
               <!-- configurar link -->
                       <a href="" class="menu-link">
