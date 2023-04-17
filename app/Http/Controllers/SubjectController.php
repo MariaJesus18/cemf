@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Subset;
 
 class SubjectController extends Controller
 {
@@ -14,7 +15,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        return view('subjects.index', [
+            'subject' => Subject::all()
+        ]);
     }
 
     /**
@@ -35,7 +38,9 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subject::create($request->all());
+
+        return redirect('/subjects');
     }
 
     /**
@@ -46,7 +51,6 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        //
     }
 
     /**
@@ -57,7 +61,9 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        return view('subjects.edit', [
+            'subject' => Subject::find($subject->id)
+        ]);
     }
 
     /**
@@ -69,7 +75,11 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        //
+        $subject = Subject::find($subject->id);
+
+        $subject->update($request->all());
+
+        return redirect('/subjects');
     }
 
     /**
@@ -80,6 +90,8 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+
+        return redirect('/subjects');
     }
 }
