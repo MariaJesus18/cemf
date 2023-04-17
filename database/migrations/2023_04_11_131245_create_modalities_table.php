@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('modalities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('occurrencetype'); 
+            $table->unsignedBigInteger('occurrencetype');
             $table->timestamps();
         });
     }

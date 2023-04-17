@@ -28,13 +28,13 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
 
-            $table  ->bigInteger('studend_id');
+            $table->unsignedBigInteger('studend_id');
             $table->foreign('studend_id')->references('id')->on('students');
 
-            $table->bigInteger('creatoruser_id');
+            $table->unsignedBigInteger('creatoruser_id');
             $table->foreign('creatoruser_id')->references('id')->on('users');
 
-            $table->bigInteger('editoruser_id');
+            $table->unsignedBigInteger('editoruser_id');
             $table->foreign('editoruser_id')->references('id')->on('users');
 
             $table->timestamps();

@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('students_attachments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student');//idstudent
+            $table->unsignedBigInteger('student'); //idstudent
             $table->foreign('student')->references('id')->on('students');
             $table->string('title');
             $table->string('file');
             $table->dateTime('dateInclusion');
-            $table->unsignedBigInteger('id_userCreator');//idid_userCreator
+            $table->unsignedBigInteger('id_userCreator'); //idid_userCreator
             $table->foreign('id_userCreator')->references('id')->on('users');
-           
+
             $table->timestamps();
         });
     }

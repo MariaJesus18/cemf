@@ -10,17 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class StudentAttachments extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'student',
         'title',
         'file',
         'dateInclusion',
         'id_userCreator',
     ];
-    
+
     public function student(): HasMany
     {
         return $this->hasMany(Student::class, 'student');
     }
-
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("discount");
 
-            $table->bigInteger('contract_id');
+            $table->unsignedBigInteger('contract_id');
             $table->foreign('contract_id')->references('id')->on('contracts');
 
             $table->timestamps();

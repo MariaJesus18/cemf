@@ -233,7 +233,7 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="{{url('disciplinas')}}" class="menu-link">
+                      <a href="{{url('subjects')}}" class="menu-link">
                         <div data-i18n="Without navbar">Disciplinas</div>
                       </a>
               <!-- configurar link -->
@@ -333,12 +333,14 @@
           </ul>
 
           <!-- configurar link -->
-          <a class="dropdown-item" href="">
-            <!-- <i class="bx bx-power-off me-2"></i> -->
-            <a href="{{url('logout')}}">
-              <i class="menu-icon tf-icons fa-solid fa-right-from-bracket align-middle"></i>
-              <span class="align-middle">Sair</span>
-            </a>
+          <div class="container mb-3">
+            <a class="dropdown-item" href="">
+              <!-- <i class="bx bx-power-off me-2"></i> -->
+              <a href="{{url('logout')}}">
+                <i class="menu-icon tf-icons fa-solid fa-right-from-bracket align-middle"></i>
+                <span class="align-middle">Sair</span>
+              </a>
+          </div>
 
           </a>
         </aside>

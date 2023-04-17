@@ -23,8 +23,8 @@ return new class extends Migration
 
             $table->string('telephone');
 
-            $table->bigInteger('unit_id');
-            $table->foreign('unit_id')->references('id')->on('units');
+            // $table->unsignedBigInteger('unit_id');
+            // $table->foreign('unit_id')->references('id')->on('units');   
 
 
 

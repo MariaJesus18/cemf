@@ -2,28 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Subject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Mockery\Matcher\Subset;
 
-class UserController extends Controller
+class SubjectController extends Controller
 {
-    public function activated()
-    {
-        return view('users.index', ['users' => \DB::table('users')->where('status', '=', true)->get()]);
-    }
-
-
-    // public function search(Request $request)
-    // {
-    //     // $results=>\DB::tables('users')->where('name','email','')
-    // }
-
-    public function disabled()
-    {
-        return view('users.index', ['users' => \DB::table('users')->where('status', '=', false)->get()]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index', ['users' => User::all()]);
+        return view('subjects.index', [
+            'subject' => Subject::all()
+        ]);
     }
 
     /**
@@ -41,6 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -51,51 +38,60 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subject::create($request->all());
+
+        return redirect('/subjects');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Subject $subject)
     {
-        return view('users.show', ['user' => $user]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Subject $subject)
     {
-        //
+        return view('subjects.edit', [
+            'subject' => Subject::find($subject->id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Subject $subject)
     {
-        //
+        $subject = Subject::find($subject->id);
+
+        $subject->update($request->all());
+
+        return redirect('/subjects');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+
+        return redirect('/subjects');
     }
 }

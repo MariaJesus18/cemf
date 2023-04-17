@@ -34,7 +34,7 @@ return new class extends Migration
             $table->dateTime('dateCreated');
             $table->dateTime('changeDate');
             $table->boolean('status');
-            
+
             $table->timestamps();
         });
     }
