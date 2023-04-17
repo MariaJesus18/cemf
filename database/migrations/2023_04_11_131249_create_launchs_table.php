@@ -15,25 +15,25 @@ return new class extends Migration
     {
         Schema::create('launchs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('contract');//idmodalidade
+            $table->unsignedBigInteger('contract'); //idmodalidade
             $table->foreign('contract')->references('id')->on('contracts');
 
-            $table->unsignedBigInteger('student');//idstudent
+            $table->unsignedBigInteger('student'); //idstudent
             $table->foreign('student')->references('id')->on('students');
 
-            $table->unsignedBigInteger('supplier');//idsupplier
+            $table->unsignedBigInteger('supplier'); //idsupplier
             $table->foreign('supplier')->references('id')->on('suppliers');
 
-            $table->unsignedBigInteger('cashAccount');//idocashAccount
+            $table->unsignedBigInteger('cashAccount'); //idocashAccount
             $table->foreign('cashAccount')->references('id')->on('cashAccounts');
 
-            $table->unsignedBigInteger('type');//idtype
+            $table->unsignedBigInteger('type'); //idtype
             $table->foreign('type')->references('id')->on('postingAttachments');
 
-            $table->unsignedBigInteger('category');//idcategory
+            $table->unsignedBigInteger('category'); //idcategory
             $table->foreign('category')->references('id')->on('categorys');
 
-            $table->unsignedBigInteger('paymentMethod');//idformapgto
+            $table->unsignedBigInteger('paymentMethod'); //idformapgto
             $table->foreign('paymentMethod')->references('id')->on('paymentMethods');
 
             $table->date('expiration');
@@ -47,16 +47,16 @@ return new class extends Migration
             $table->string('historico');
             $table->string('installment');
 
-            $table->unsignedBigInteger('id_creatorUser');//id_creatorUser
+            $table->unsignedBigInteger('id_creatorUser'); //id_creatorUser
             $table->foreign('id_creatorUser')->references('id')->on('users');
 
-            $table->unsignedBigInteger('id_userChange');//id_userChange
+            $table->unsignedBigInteger('id_userChange'); //id_userChange
             $table->foreign('id_userChange')->references('id')->on('users');
-            
+
             $table->dateTime('dateCreated');
             $table->dateTime('changeDate');
             $table->boolean('status'); //atiov | inativo
-            
+
             $table->timestamps();
         });
     }

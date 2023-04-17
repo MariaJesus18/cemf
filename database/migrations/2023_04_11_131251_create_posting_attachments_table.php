@@ -13,20 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('logbooks', function (Blueprint $table) {
+        Schema::create('posting_attachments', function (Blueprint $table) {
             $table->id();
-            
-            $table->unsignedBigInteger('student');//idstudent
-            $table->foreign('student')->references('id')->on('students');
-
+            $table->unsignedBigInteger('launch'); //idlancamentp
+            $table->foreign('launch')->references('id')->on('launchs');
             $table->string('title');
-            $table->string('observation');
-
-            $table->unsignedBigInteger('id_userCreator');//idid_userCreator
-            $table->foreign('id_userCreator')->references('id')->on('users');
-            
+            $table->string('file');
             $table->dateTime('dateInclusion');
-           
+            $table->unsignedBigInteger('id_userCreator');
+            $table->foreign('id_userCreator')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logbooks');
+        Schema::dropIfExists('posting_attachments');
     }
 };
