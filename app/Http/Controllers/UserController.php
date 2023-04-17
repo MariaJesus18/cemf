@@ -4,9 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function activated()
+    {
+        return view('users.index', ['users' => \DB::table('users')->where('status', '=', true)->get()]);
+    }
+
+
+    // public function search(Request $request)
+    // {
+    //     // $results=>\DB::tables('users')->where('name','email','')
+    // }
+
+    public function disabled()
+    {
+        return view('users.index', ['users' => \DB::table('users')->where('status', '=', false)->get()]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +31,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index',['users'=>User::all()]);
+        return view('users.index', ['users' => User::all()]);
     }
 
     /**
@@ -45,7 +62,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.index',['user'=>$user]);
+        return view('users.show', ['user' => $user]);
     }
 
     /**

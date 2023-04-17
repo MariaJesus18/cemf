@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('telephone');
 
             // $table->unsignedBigInteger('unit_id');
-            // $table->foreign('unit_id')->references('id')->on('units');
+            // $table->foreign('unit_id')->references('id')->on('units');   
 
 
 
