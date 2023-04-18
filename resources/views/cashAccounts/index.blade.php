@@ -10,7 +10,7 @@
     <!-- Botão para acionar modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado"
         onclick="mostrar_modal()">
-        Adicionar disciplina
+        Incluir Conta +
     </button>
 
     <!-- Modal -->
@@ -19,23 +19,40 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar disciplina</h5>
+                    <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar Conta</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container-xxl">
                         <div class="authentication-wrapper authentication-basic container-p-y">
-                            <form class="mb-3" action="disciplinas" method="POST">
+                            <form class="mb-3" action="contaCaixa" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" name="name" id="name" class="form-control">
+                                    <input type="text" name="bankName" id="bankName" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="agencia" class="form-label">Agencia</label>
+                                    <input type="text" name="agency" id="agency" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="conta" class="form-label">Conta</label>
+                                    <input type="text" name="checkingAccount" id="checkingAccount" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="digito" class="form-label">Dígito</label>
+                                    <input type="text" name="typecc" id="typecc" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="codigo" class="form-label">Código</label>
+                                    <input type="text" name="bankCode" id="bankCode" class="form-control">
                                 </div>
                                 <div class="row">
                                     <div class="col text-center">
                                         <button type="submit" class="btn btn-primary">Salvar</button>
                                     </div>
                                 </div>
+
 
                             </form>
                         </div>
@@ -47,13 +64,17 @@
     <!-- /modal -->
 
 
-    @foreach ($subject as $subjects)
+    @foreach ($cashAccount as $cashAccounts)
         <p>
-            <strong>ID: </strong>{{ $subjects->id }}
-            <strong>NOME: </strong>{{ $subjects->name }}
-            <a href="{{route('subjects.edit', $subjects->id)}}">Editar</a>
+            <strong>ID: </strong>{{ $cashAccounts->id }}
+            <strong>NOME: </strong>{{ $cashAccounts->name }}
+            <strong>AGÊNCIA: </strong>{{ $cashAccounts->agency }}
+            <strong>CONTA: </strong>{{ $cashAccounts->checkingAccount }}
+            <strong>DÍGITO: </strong>{{ $cashAccounts->typecc }}
+            <strong>CÓDICO: </strong>{{ $cashAccounts->bankCode }}
+            <a href="{{route('cashAccounts.edit', $cashAccounts->id)}}">Editar</a>
         </p>
-        <form action="{{route('subjects.destroy', $subjects)}}" method="post">
+        <form action="{{route('cashAccounts.destroy', $cashAccounts)}}" method="post">
             @csrf
             @method('DELETE')   
             <button>Deletar</button>

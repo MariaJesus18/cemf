@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('checkingAccount');
             $table->unsignedBigInteger('typecc');
             $table->string('bankName');
-            $table->string('title');
+            // $table->string('title');
             $table->timestamps();
         });
     }

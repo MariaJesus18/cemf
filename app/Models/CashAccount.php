@@ -14,6 +14,6 @@ class CashAccount extends Model
         'agency',
         'checkingAccount',
         'typecc',
-        'title',
+       
     ];
 }

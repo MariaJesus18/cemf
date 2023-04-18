@@ -14,7 +14,9 @@ class CashAccountController extends Controller
      */
     public function index()
     {
-        //
+        return view('cashAccounts.index', [
+            'cashAccount' => CashAccount::all()
+        ]);
     }
 
     /**
@@ -35,7 +37,9 @@ class CashAccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        CashAccount::create($request->all());
+
+        return redirect('/contaCaixa');
     }
 
     /**
@@ -57,7 +61,9 @@ class CashAccountController extends Controller
      */
     public function edit(CashAccount $cashAccount)
     {
-        //
+        return view('cashAccounts.edit', [
+            'cashAccount' => CashAccount::find($cashAccount->id)
+        ]);
     }
 
     /**
@@ -69,7 +75,11 @@ class CashAccountController extends Controller
      */
     public function update(Request $request, CashAccount $cashAccount)
     {
-        //
+        $cashAccount = $cashAccount::find($cashAccount->id);
+
+        $cashAccount->update($request->all());
+
+        return redirect('/contaCaixa');
     }
 
     /**
@@ -80,6 +90,8 @@ class CashAccountController extends Controller
      */
     public function destroy(CashAccount $cashAccount)
     {
-        //
+        $cashAccount->delete();
+
+        return redirect('/contaCaixa');
     }
 }

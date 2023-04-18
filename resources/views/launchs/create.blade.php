@@ -1,3 +1,5 @@
+
+
 </html>
 
 @extends('layouts.master')
@@ -10,7 +12,7 @@
     <!-- Botão para acionar modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado"
         onclick="mostrar_modal()">
-        Adicionar disciplina
+        Incluir Lançamento
     </button>
 
     <!-- Modal -->
@@ -19,25 +21,56 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar disciplina</h5>
+                    <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Inclusão de Lançamento</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container-xxl">
                         <div class="authentication-wrapper authentication-basic container-p-y">
-                            <form class="mb-3" action="disciplinas" method="POST">
-                                @csrf
+                            <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+
                                 <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" name="name" id="name" class="form-control">
+                                    <label for="type" class="form-label">Tipo</label>
+                                    <select class="form-select" id="type" aria-label="Default select example"
+                                        name="">
+                                        <option value="">?</option>
+                                        <option value="">?</option>
+                                    </select>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="maturity" class="form-label">Vencimento</label>
+                                    <select class="form-select" id="maturity" aria-label="Default select example"
+                                        name="">
+                                        <option value="">?</option>
+                                        <option value="">?</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="value" class="form-label">Valor Original</label>
+                                    <input type="text" class="form-control " id="value" name="velue"
+                                        placeholder="Valor" autofocus />
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="historic" class="form-label">Historico</label>
+                                    <input type="text" class="form-control" id="historic" name="historic" autofocus />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="count" class="form-label">Conta Caixa</label>
+                                    <select class="form-select" id="count" aria-label="Default select example"
+                                        name="">
+                                        <option value="">?</option>
+                                        <option value="">?</option>
+                                    </select>
+                                </div>
+
                                 <div class="row">
                                     <div class="col text-center">
                                         <button type="submit" class="btn btn-primary">Salvar</button>
                                     </div>
                                 </div>
-
                             </form>
+
+
                         </div>
                     </div>
                 </div>
@@ -45,20 +78,6 @@
         </div>
     </div>
     <!-- /modal -->
-
-
-    @foreach ($subject as $subjects)
-        <p>
-            <strong>ID: </strong>{{ $subjects->id }}
-            <strong>NOME: </strong>{{ $subjects->name }}
-            <a href="{{route('subjects.edit', $subjects->id)}}">Editar</a>
-        </p>
-        <form action="{{route('subjects.destroy', $subjects)}}" method="post">
-            @csrf
-            @method('DELETE')   
-            <button>Deletar</button>
-        </form>
-    @endforeach
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -79,6 +98,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
 
     <script>
         function mostrar_modal() {

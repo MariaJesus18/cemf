@@ -14,7 +14,7 @@
                 @method('PUT')
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" name="name" id="nome" class="form-control" value="{{$subject->name}}">
+                    <input type="text" name="name" id="name" class="form-control" value="{{$subject->name}}">
                 </div>
                 <div class="row">
                     <div class="col text-center">
