@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('historical_notas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('contract'); //idcontract
-            $table->foreign('contract')->references('contract_id')->on('contracts');
+            $table->foreign('contract')->references('id')->on('contracts');
             $table->unsignedBigInteger('student'); //idstudent
             $table->foreign('student')->references('id')->on('students');
             $table->unsignedBigInteger('school'); //idschool

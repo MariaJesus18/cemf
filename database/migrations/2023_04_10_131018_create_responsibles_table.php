@@ -28,8 +28,8 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
 
-            $table->unsignedBigInteger('studend_id');
-            $table->foreign('studend_id')->references('id')->on('students');
+            // $table->unsignedBigInteger('studend_id');
+            // $table->foreign('studend_id')->references('id')->on('students');
 
             $table->unsignedBigInteger('creatoruser_id');
             $table->foreign('creatoruser_id')->references('id')->on('users');
