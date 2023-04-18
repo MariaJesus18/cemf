@@ -37,3 +37,4 @@ require __DIR__ . '/unit.php';
 require __DIR__ . '/subject.php';
 require __DIR__ . '/report.php';
 require __DIR__ . '/launch.php';
+require __DIR__ . '/school.php';
