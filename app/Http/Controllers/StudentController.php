@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
-class SchoolController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        return view('schools.index', ['schools' => School::all()]);
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        return view('schools.create');
+        //
     }
 
     /**
@@ -35,28 +35,27 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        School::create($request->all());
-        return redirect(url('schools'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\School  $school
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(School $school)
+    public function show(Student $student)
     {
-        return view('schools.show', ['school' => $school]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\School  $school
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(School $school)
+    public function edit(Student $student)
     {
         //
     }
@@ -65,24 +64,22 @@ class SchoolController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\School  $school
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, School $school)
+    public function update(Request $request, Student $student)
     {
-        $school->update($request->all());
-        return redirect(url('schools'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\School  $school
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(School $school)
+    public function destroy(Student $student)
     {
-        $school->delete();
-        return redirect(url('schools'));
+        //
     }
 }

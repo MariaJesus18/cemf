@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             // $table->unsignedBigInteger('cnpj');
-            $table->foreignId('responsible')->constrained('responsavels');
+            $table->foreignId('responsible')->constrained('responsibles');
             $table->unsignedBigInteger('cpf');
             $table->unsignedBigInteger('phone1');
             $table->unsignedBigInteger('phone2');
