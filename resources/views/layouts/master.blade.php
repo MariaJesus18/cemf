@@ -233,7 +233,7 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="{{url('subjects')}}" class="menu-link">
+                      <a href="{{url('disciplinas')}}" class="menu-link">
                         <div data-i18n="Without navbar">Disciplinas</div>
                       </a>
               <!-- configurar link -->
@@ -277,10 +277,10 @@
                     <ul class="menu-sub">
               <!-- configurar link -->
                       <a href="" class="menu-link">
-                        <div data-i18n="Without navbar">Ação</div>
+                        <div data-i18n="Without navbar">Contas Caixa</div>
                       </a>
               <!-- configurar link -->
-                      <a href="" class="menu-link">
+                      <a href="{{url('contaCaixa')}}" class="menu-link">
                         <div data-i18n="Without navbar">Ação</div>
                       </a>
                     </ul>
