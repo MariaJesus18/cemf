@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Student extends Model
 {
@@ -13,35 +12,35 @@ class Student extends Model
 
     protected $fillable = [
         'name',
-        'responsible', 
+        'responsible',
         'cpf',
-        'phone1',
-        'phone2',
+        'telephone1',
+        'telephone2',
         'cep',
-        'street',
+        'road',
         'number',
         'neighborhood',
         'complement',
         'city',
         'state',
         'observation',
-        'id_creatorUser',
-        'id_userChange',
-        'dateCreated',
-        'changeDate',
+        'creatoruser_id',
+        'editoruser_id',
         'status',
     ];
 
-    public function contract(): BelongsToMany
+    /**
+     * Get the user that owns the Student
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function creatoruser(): BelongsTo
     {
-        return $this->belongsToMany(Contract::class);
+        return $this->belongsTo(User::class);
     }
-    public function logBook(): HasMany
+
+    public function editoruser(): BelongsTo
     {
-        return $this->hasMany(Logbook::class);
-    }
-    public function responsible(): HasMany
-    {
-        return $this->hasMany(Responsible::class);
+        return $this->belongsTo(User::class);
     }
 }

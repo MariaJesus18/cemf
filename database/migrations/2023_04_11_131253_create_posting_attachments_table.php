@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('posting_attachments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('launch'); //idlancamentp
-            $table->foreign('launch')->references('id')->on('launchs');
+            // $table->unsignedBigInteger('launch'); //idlancamentp
+            // $table->foreign('launch')->references('id')->on('launchs');
             $table->string('title');
             $table->string('file');
             $table->dateTime('dateInclusion');

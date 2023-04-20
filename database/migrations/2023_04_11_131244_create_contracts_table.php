@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('studend_id');
-            $table->foreign('studend_id')->references('id')->on('studends');
+            $table->foreign('studend_id')->references('id')->on('students');
 
 
             $table->unsignedBigInteger('modalitiy_id');
@@ -27,8 +27,8 @@ return new class extends Migration
             $table->foreign('unit_id')->references('id')->on('units');
 
 
-            $table->unsignedBigInteger('convenant_id');
-            $table->foreign('convenant_id')->references('id')->on('convenants');
+            $table->unsignedBigInteger('covenant_id');
+            $table->foreign('covenant_id')->references('id')->on('covenants');
 
 
             $table->string('value');
@@ -50,13 +50,13 @@ return new class extends Migration
             $table->foreign('serie_id')->references('id')->on('series');
 
 
-            $table->unsignedBigInteger('subscription_id'); //valor da taxa de inscrição
-            $table->foreign('subscription_id')->references('id')->on('subscritions');
+            // $table->unsignedBigInteger('subscription_id'); //valor da taxa de inscrição
+            // $table->foreign('subscription_id')->references('id')->on('subscritions');
 
 
 
             $table->unsignedBigInteger('formpayment_id'); //forma de pagamento
-            $table->foreign('formpayment_id')->references('id')->on('formpayments');
+            $table->foreign('formpayment_id')->references('id')->on('payment_methods');
 
 
             $table->unsignedBigInteger('subject_id');

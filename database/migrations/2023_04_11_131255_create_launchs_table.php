@@ -25,16 +25,16 @@ return new class extends Migration
             $table->foreign('supplier')->references('id')->on('suppliers');
 
             $table->unsignedBigInteger('cashAccount'); //idocashAccount
-            $table->foreign('cashAccount')->references('id')->on('cashAccounts');
+            $table->foreign('cashAccount')->references('id')->on('cash_accounts');
 
-            $table->unsignedBigInteger('type'); //idtype
-            $table->foreign('type')->references('id')->on('postingAttachments');
+            $table->unsignedBigInteger('type'); //idtype 
+            $table->foreign('type')->references('id')->on('posting_attachments');
 
             $table->unsignedBigInteger('category'); //idcategory
-            $table->foreign('category')->references('id')->on('categorys');
+            $table->foreign('category')->references('id')->on('launch_categorys');
 
             $table->unsignedBigInteger('paymentMethod'); //idformapgto
-            $table->foreign('paymentMethod')->references('id')->on('paymentMethods');
+            $table->foreign('paymentMethod')->references('id')->on('payment_methods');
 
             $table->date('expiration');
             $table->date('lowDate');
