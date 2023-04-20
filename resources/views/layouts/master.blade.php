@@ -339,7 +339,7 @@
 
                   <ul class="menu-sub">
             <!-- configurar link -->
-                    <a href="" class="menu-link">
+                    <a href="{{route('covenants.index')}}" class="menu-link">
                       <div data-i18n="Without navbar">Convênios</div>
                     </a>
             <!-- configurar link -->

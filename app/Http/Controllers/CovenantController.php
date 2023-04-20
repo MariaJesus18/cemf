@@ -14,7 +14,7 @@ class CovenantController extends Controller
      */
     public function index()
     {
-        //
+        return view('covenants.index', ['covenants' => Covenant::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class CovenantController extends Controller
      */
     public function create()
     {
-        //
+        return view('covenants.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class CovenantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Covenant::create($request->all());
+        return redirect(url('covenants'));
     }
 
     /**
@@ -46,7 +47,7 @@ class CovenantController extends Controller
      */
     public function show(Covenant $covenant)
     {
-        //
+        return view('covenants.show', ['covenant' => $covenant]);
     }
 
     /**
@@ -69,7 +70,8 @@ class CovenantController extends Controller
      */
     public function update(Request $request, Covenant $covenant)
     {
-        //
+        $covenant->update($request->all());
+        return redirect(url('covenants'));
     }
 
     /**
@@ -80,6 +82,7 @@ class CovenantController extends Controller
      */
     public function destroy(Covenant $covenant)
     {
-        //
+        $covenant->delete();
+        return redirect(url('covenants'));
     }
 }

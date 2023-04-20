@@ -38,3 +38,4 @@ require __DIR__ . '/subject.php';
 require __DIR__ . '/report.php';
 require __DIR__ . '/launch.php';
 require __DIR__ . '/school.php';
+require __DIR__ . '/covenant.php';
