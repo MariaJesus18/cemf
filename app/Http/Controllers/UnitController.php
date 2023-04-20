@@ -14,7 +14,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        return view('units.index');
+        return view('units.index', ['units' => Unit::all()]);
     }
 
     /**

@@ -43,7 +43,7 @@
 
               <div class="mb-3">
                 <label class="form-label" for="basic-default-message">Observações</label>
-                <textarea id="basic-default-message" class="form-control" placeholder="Observações" name="observation" required>value="{{old('observation')}}"</textarea>
+                <textarea id="basic-default-message" class="form-control" placeholder="Observações" name="observation" required>{{old('observation')}}</textarea>
               </div>
             </div>
           </div>
@@ -59,12 +59,12 @@
 
                 <div class="mb-3">
                   <label class="form-label" for="basic-default-phone">Telefone 1</label>
-                  <input type="tel" id="basic-default-phone" class="form-control phone-mask" placeholder="telefone 1" name="Telefone 1" required value="{{old('telephone1')}}">
+                  <input type="tel" id="basic-default-phone" class="form-control phone-mask" placeholder="telefone 1" name="telephone1" required value="{{old('telephone1')}}">
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label" for="basic-default-phone">Telefone 1</label>
-                  <input type="tel" id="basic-default-phone" class="form-control phone-mask" placeholder="telefone 2" name="Telefone 2" required value="{{old('telephone2')}}">
+                  <input type="tel" id="basic-default-phone" class="form-control phone-mask" placeholder="telefone 2" name="telephone2" required value="{{old('telephone2')}}">
                 </div>
 
 

@@ -57,7 +57,7 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
                                         <a class="dropdown-item" href="{{route('units.show',['unit'=>$unit->id])}}">Visualizar</a>
-                                        <a class="dropdown-item" href="{{route('unit.destroy',['unit'=>$unit->id])}}">Apagar</a> 
+                                        <a class="dropdown-item" href="{{url('unit',['unit'=>$unit->id])}}">Apagar</a> 
                                         {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
                                     </div>
                                 </div>                                
