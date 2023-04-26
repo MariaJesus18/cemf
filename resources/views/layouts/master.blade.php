@@ -254,8 +254,8 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="" class="menu-link">
-                        <div data-i18n="Without navbar">Ação</div>
+                      <a href="{{url('modalities')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Modalidades</div>
                       </a>
               <!-- configurar link -->
                       <a href="" class="menu-link">
@@ -334,17 +334,17 @@
             <!-- configurar link -->
                   <a href="" class="menu-link menu-toggle">
                     <!-- <i class="menu-icon tf-icons fa-solid fa-gear"></i> -->
-                    <div data-i18n="Layouts">Convênios</div>
+                    <div data-i18n="Layouts">Testes</div>
                   </a>
 
                   <ul class="menu-sub">
             <!-- configurar link -->
                     <a href="{{route('covenants.index')}}" class="menu-link">
-                      <div data-i18n="Without navbar">Convênios</div>
+                      <div data-i18n="Without navbar">Teste de Convênios</div>
                     </a>
             <!-- configurar link -->
                     <a href="" class="menu-link">
-                      <div data-i18n="Without navbar">Ação</div>
+                      <div data-i18n="Without navbar"></div>
                     </a>
                   </ul>
                 </li>
