@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Unit extends Model
 {
     use HasFactory;
-    protected $table="units";
+    protected $table = "units";
 
     /**
      * Get the user that owns the Unit
@@ -20,23 +21,21 @@ class Unit extends Model
         return $this->belongsTo(Responsible::class);
     }
 
-    protected $fillable=[
+    protected $fillable = [
         'name',
-        'responsible_id',
+        // 'responsible_id',
         'cnpj',
         'observation',
-        'cpf',  
-        'telephone1',  
-        'telephone2',  
-        'road',  
-        'number',  
-        'neighborhood',  
-        'complement',  
-        'city',  
+        'cpf',
+        'cep',
+        'telephone1',
+        'telephone2',
+        'road',
+        'number',
+        'neighborhood',
+        'complement',
+        'city',
         'state',
 
     ];
-
-
 }
-

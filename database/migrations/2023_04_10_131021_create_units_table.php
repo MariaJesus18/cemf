@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cnpj');
             $table->text('observation');
             $table->string('cpf');
+            $table->string('cep');
             $table->string('telephone1');
             $table->string('telephone2');
             $table->string('road');
@@ -28,8 +29,8 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
 
-            $table->unsignedBigInteger('responsible_id');
-            $table->foreign('responsible_id')->references('id')->on('responsibles');
+            // $table->unsignedBigInteger('responsible_id');
+            // $table->foreign('responsible_id')->references('id')->on('responsibles');
 
             $table->timestamps();
         });
