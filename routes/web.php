@@ -27,3 +27,4 @@ require __DIR__ . '/launch.php';
 require __DIR__ . '/school.php';
 require __DIR__ . '/cashAccount.php';
 require __DIR__ . '/covenant.php';
+require __DIR__ . '/typeRelease.php';
