@@ -43,6 +43,7 @@
                     {{-- <tr> --}}
                         <th scope="col">Id</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Tipo de Ocorrência</th>
                     {{-- </tr> --}}
                 </thead>
                 <tbody>
@@ -50,6 +51,7 @@
                         <tr class="">
                             <td scope="row">{{$modality->id}}</td>
                             <td scope="row">{{$modality->name}}</td>
+                            <td scope="row">{{$modality->occurrencetype}}</td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
