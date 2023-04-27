@@ -343,8 +343,8 @@
                       <div data-i18n="Without navbar">Teste de Convênios</div>
                     </a>
             <!-- configurar link -->
-                    <a href="" class="menu-link">
-                      <div data-i18n="Without navbar"></div>
+                    <a href="{{url('lcategories')}}" class="menu-link">
+                      <div data-i18n="Without navbar">Teste de Categorias de Lançamento</div>
                     </a>
                   </ul>
                 </li>

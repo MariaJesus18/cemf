@@ -40,3 +40,4 @@ require __DIR__ . '/launch.php';
 require __DIR__ . '/school.php';
 require __DIR__ . '/covenant.php';
 require __DIR__ . '/modality.php';
+require __DIR__ . '/launchcategory.php';
