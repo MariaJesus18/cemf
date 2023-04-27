@@ -33,7 +33,7 @@
                             <div class="modal-body">
                                 <div class="container-xxl">
                                     <div class="authentication-wrapper authentication-basic container-p-y">
-                                        <form class="mb-3" action="{{ route('disciplinas') }}" method="POST">
+                                        <form class="mb-3" action="{{ route('subjects.store') }}" method="POST">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="nome" class="form-label">Nome</label>
@@ -83,14 +83,10 @@
         <div class="table-responsive m-3">
             <table class="table">
                 <thead>
-                    {{-- <tr> --}}
+        
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
-                    {{-- <th scope="col">Agência</th>
-                        <th scope="col">Conta</th>
-                        <th scope="col">Dígito</th>
-                        <th scope="col">Código</th> --}}
-                    {{-- </tr> --}}
+                   
                 </thead>
                 <tbody>
                     @forelse ($subject as $subjects)
@@ -113,7 +109,6 @@
                                             <button class="dropdown-item">Deletar</button>
                                         </form>
 
-                                        {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
                                     </div>
                                 </div>
                             </td>

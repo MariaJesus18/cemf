@@ -40,7 +40,7 @@ class SubjectController extends Controller
     {
         Subject::create($request->all());
 
-        return redirect('/disciplinas');
+        return redirect('/subjects');
     }
 
     /**
@@ -79,7 +79,7 @@ class SubjectController extends Controller
 
         $subject->update($request->all());
 
-        return redirect('/disciplinas');
+        return redirect('/subjects');
     }
 
     /**
@@ -92,6 +92,6 @@ class SubjectController extends Controller
     {
         $subject->delete();
 
-        return redirect('/disciplinas');
+        return redirect('/subjects');
     }
 }
