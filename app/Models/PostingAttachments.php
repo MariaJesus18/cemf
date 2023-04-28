@@ -11,7 +11,7 @@ class PostingAttachments extends Model
     use HasFactory;
 
     protected $fillable = [
-        'launch',
+        // 'launch',
         'title',
         'file',
         'dateInclusion',

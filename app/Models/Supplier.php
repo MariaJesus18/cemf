@@ -11,40 +11,38 @@ class Supplier extends Model
     use HasFactory;
 
     protected $fillable = [
-        'contract',
+        'contract_id',
         'typeHolder',
         'name',
         'cpf',
         'cnpj',
-        'phone1',
-        'phone2',
+        'telephone1',
+        'telephone2',
         'email',
         'cep',
-        'street',
+        'road',
         'number',
         'neighborhood',
         'complement',
         'city',
         'uf',
         'observation',
-        'id_creatorUser',
-        'id_userChange',
-        'dateCreated',
-        'changeDate',
+        'creatoruser_id',
+        'editoruser_id',
         'status',
     ];
 
-    public function contract(): BelongsTo
+    public function contract_id(): BelongsTo
     {
-        return $this->belongsTo(Contract::class, 'contract');
+        return $this->belongsTo(Contract::class);
     }
-    public function userCreator(): BelongsTo
+    public function creatoruser(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_creatorUse');
+        return $this->belongsTo(User::class);
     }
 
-    public function userChange(): BelongsTo
+    public function editoruser(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_userChange');
+        return $this->belongsTo(User::class);
     }
 }

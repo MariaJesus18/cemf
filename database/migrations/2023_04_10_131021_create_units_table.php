@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cnpj');
             $table->text('observation');
             $table->string('cpf');
+            $table->string('cep');
             $table->string('telephone1');
             $table->string('telephone2');
             $table->string('road');

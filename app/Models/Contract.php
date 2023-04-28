@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Contract extends Model
 {
     use HasFactory;
 
-    
+
     /**
      * Get the user that owns the Contract
      *
@@ -30,9 +31,9 @@ class Contract extends Model
         return $this->belongsTo(Unit::class);
     }
 
-    public function convenant(): BelongsTo
+    public function covenant(): BelongsTo
     {
-        return $this->belongsTo(Convenants::class);
+        return $this->belongsTo(Covenant::class);
     }
 
     public function responsiblepayment(): BelongsTo
@@ -50,10 +51,10 @@ class Contract extends Model
         return $this->belongsTo(Serie::class);
     }
 
-    public function subscription(): BelongsTo
-    {
-        return $this->belongsTo(Subscription::class);
-    }
+    // public function subscription(): BelongsTo
+    // {
+    //     return $this->belongsTo(Subscription::class);
+    // }
 
 
     public function formpayment(): BelongsTo
@@ -70,7 +71,7 @@ class Contract extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function editoruser(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -82,17 +83,17 @@ class Contract extends Model
         'studend_id',
         'modalitiy_id',
         'unit_id',
+        'covenant_id',
         'value',
         'school_id',
         'firstpaymentdate',
         'responsiblepayment_id',
         'shift_id',
         'serie_id',
-        'subscription_id',
+        // 'subscription_id',
         'formpayment_id',
         'subject_id',
         'creatoruser_id',
         'editoruser_id',
     ];
-
 }

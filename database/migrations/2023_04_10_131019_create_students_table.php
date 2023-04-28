@@ -18,21 +18,25 @@ return new class extends Migration
             $table->string('name');
             // $table->unsignedBigInteger('cnpj');
             $table->foreignId('responsible')->constrained('responsibles');
+            
             $table->unsignedBigInteger('cpf');
-            $table->unsignedBigInteger('phone1');
-            $table->unsignedBigInteger('phone2');
+            $table->unsignedBigInteger('telephone1');
+            $table->unsignedBigInteger('telephone2');
             $table->unsignedBigInteger('cep');
-            $table->string('street');
+            $table->string('road');
             $table->string('number');
             $table->string('neighborhood');
             $table->string('complement');
             $table->string('city');
             $table->string('uf');
             $table->string('observation');
-            $table->integer('id_creatorUser')->constrained('users');
-            $table->integer('id_userChange')->constrained('users');
-            $table->dateTime('dateCreated');
-            $table->dateTime('changeDate');
+
+            $table->unsignedBigInteger('creatoruser_id');
+            $table->foreign('creatoruser_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('editoruser_id');
+            $table->foreign('editoruser_id')->references('id')->on('users');
+
             $table->boolean('status');
 
             $table->timestamps();

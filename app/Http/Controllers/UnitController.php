@@ -14,7 +14,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        return view('units.index', ['units' => Unit::all()]);
     }
 
     /**
@@ -35,7 +35,8 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Unit::create($request->all());
+        return redirect(url('units'));
     }
 
     /**
@@ -46,7 +47,7 @@ class UnitController extends Controller
      */
     public function show(Unit $unit)
     {
-        //
+        return view('units.show', ['unit' => $unit]);
     }
 
     /**
@@ -69,7 +70,8 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
-        //
+        $unit->update($request->all());
+        return redirect(url('units'));
     }
 
     /**
@@ -80,6 +82,7 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
-        //
+        $unit->delete();
+        return redirect(url('units'));
     }
 }

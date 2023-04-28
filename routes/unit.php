@@ -5,4 +5,7 @@ use App\Http\Controllers\UnitController;
 
 // Route::middleware(['auth'])->group(function () {
 Route::resource('units', UnitController::class);
+Route::controller(UnitController::class)->group(function () {
+    Route::get('unit/{unit}', 'destroy')->name('unit.destroy');
+});
 // });

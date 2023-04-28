@@ -118,8 +118,7 @@
             <li class="menu-item">
               <!-- configurar link -->
               <a
-                href=""
-                target="_blank"
+                href="{{route('units.index')}}"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons fa-solid fa-building"></i>
@@ -375,6 +374,8 @@
             </li>
           </ul>
 
+
+          
           <!-- configurar link -->
           <div class="container mb-3">
             <a class="dropdown-item" href="">
