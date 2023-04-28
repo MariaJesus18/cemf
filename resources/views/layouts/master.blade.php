@@ -276,11 +276,11 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="" class="menu-link">
+                      <a href="{{url('cashAccounts')}}" class="menu-link">
                         <div data-i18n="Without navbar">Contas Caixa</div>
                       </a>
               <!-- configurar link -->
-                      <a href="{{url('contaCaixa')}}" class="menu-link">
+                      <a href="" class="menu-link">
                         <div data-i18n="Without navbar">Ação</div>
                       </a>
                     </ul>

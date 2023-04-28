@@ -28,8 +28,8 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
 
-            $table->unsignedBigInteger('responsible_id');
-            $table->foreign('responsible_id')->references('id')->on('responsibles');
+            // $table->unsignedBigInteger('responsible_id');
+            // $table->foreign('responsible_id')->references('id')->on('responsibles');
 
             $table->timestamps();
         });

@@ -39,7 +39,7 @@ class CashAccountController extends Controller
     {
         CashAccount::create($request->all());
 
-        return redirect('/contaCaixa');
+        return redirect('/cashAccounts');
     }
 
     /**
@@ -79,7 +79,7 @@ class CashAccountController extends Controller
 
         $cashAccount->update($request->all());
 
-        return redirect('/contaCaixa');
+        return redirect('/cashAccounts');
     }
 
     /**
@@ -92,6 +92,6 @@ class CashAccountController extends Controller
     {
         $cashAccount->delete();
 
-        return redirect('/contaCaixa');
+        return redirect('/cashAccounts');
     }
 }

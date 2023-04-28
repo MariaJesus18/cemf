@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Unit extends Model
 {
     use HasFactory;
@@ -20,9 +22,14 @@ class Unit extends Model
         return $this->belongsTo(Responsible::class);
     }
 
+    public function Team(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
+
     protected $fillable=[
         'name',
-        'responsible_id',
+        // 'responsible_id',
         'cnpj',
         'observation',
         'cpf',  
