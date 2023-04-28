@@ -33,21 +33,32 @@
                             <div class="modal-body">
                                 <div class="container-xxl">
                                     <div class="authentication-wrapper authentication-basic container-p-y">
+
+
                                         <form class="mb-3" action="{{ route('teams.store') }}" method="POST">
                                             @csrf
 
                                             <div class="row">
                                                 <div class="input-field col s3">
+                                                    {{-- @foreach($team as $teams)
+                                                        <p>{{$teams->unit_id}}</p>
+                                                        <p>aaaaaaaaa</p>
+                                                    @endforeach --}}
                                                     <select name="units[]" id="units" class="form-control">
                                                         <option value="">Unidades</option>
-                                                        @foreach ($team->units as $units)
-                                                        <option value="{{ $units->id }}">
-                                                            <p> {{ $units->name }} </p>
-                                                        </option>
-                                                         @endforeach
+                                                    @foreach ($team as $teams)
+                                                        <option value="{{$teams}}"{{($teams==$options)? 'selected':'' }}>{{$teams->unit->id}}</option>
+                                                     @endforeach
                                                     </select>
 
-                                                   
+                                                 {{-- $months = array("Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"); ?>
+                                                 <?php $options=$patient_data->month ?> 
+                                                 @if($patient_data->month) 
+                                                 <select id="expiry_month" name="month" class="form-control-sm">
+                                                     @foreach($months as $month) 
+                                                     <option value="{{$month}}"{{($month==$options)? 'selected':'' }}>{{$month}}</option>
+                                                     @endforeach
+                                                     </select> @endif <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span> </div> --}}
 
                                                 </div>
 
@@ -72,6 +83,8 @@
 
         {{-- <div class="w-100 h-100 bg-white"> --}}
         {{-- <div class="container "> --}}
+
+          {{ dd($unit->name);}} 
 
         <div class="row ">
             <div class="col-8">

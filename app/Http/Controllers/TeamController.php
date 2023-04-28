@@ -14,11 +14,18 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $unit , $team;
+
+     public function __construct(Team $team, Unit $unit){
+        $this->team = $team;
+        $this->unit = $unit;
+    }
+
     public function index(Request $request)
     {
         return view('team.index', [
             'team' => Team::all(),
-            
+            'unit' => Unit::all(),
         ]);
 
         // return view('typeRelease.index', [
@@ -42,12 +49,8 @@ class TeamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-
     {
-        
         Team::create($request->all());
-        $team = Team::with(['unit', 'user'])->get();
-
         return redirect('/teams');
     }
 
@@ -85,7 +88,6 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        $team = Team::find($team->id);
 
         $team->update($request->all());
 
