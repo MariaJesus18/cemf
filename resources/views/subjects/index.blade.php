@@ -75,6 +75,7 @@
                 <select name="download" id="download" class="btn float-end btn-white border" style="margin-right:1rem">
                     <option>Ação</option>
                 </select>
+                
             </div>
 
         </div>

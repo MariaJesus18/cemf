@@ -3,14 +3,14 @@
 
 
 @section('layout-header')
-    <title>Contas</title>
+    <title>Equipes</title>
 @endsection
 
 @section('layout-content')
     <div class="container-xxl  ">
         <div class="row justify-content-center align-items-center g-2">
             <div class="col">
-                <h1 class="float-start">Contas Caixa</h1>
+                <h1 class="float-start">Equipes</h1>
             </div>
         </div>
         <div class="row justify-content-center align-items-center g-2 mb-3">
@@ -19,48 +19,56 @@
 
                 <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem; font-size:13px;"
                     data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="mostrar_modal()">Adicionar
-                    Contas</button>
+                    Equipe</button>
                 <!-- Modal -->
                 <div class="modal fade" id="caixa_lancamento" tabindex="-1" role="dialog"
                     aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar Conta</h5>
+                                <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar disciplina
+                                </h5>
                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container-xxl">
                                     <div class="authentication-wrapper authentication-basic container-p-y">
-                                        <form class="mb-3" action="cashAccounts" method="POST">
+
+
+                                        <form class="mb-3" action="{{ route('teams.store') }}" method="POST">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="nome" class="form-label">Nome</label>
-                                                <input type="text" name="bankName" id="bankName" class="form-control">
+
+                                            <div class="row">
+                                                <div class="input-field col s3">
+                                                    {{-- @foreach($team as $teams)
+                                                        <p>{{$teams->unit_id}}</p>
+                                                        <p>aaaaaaaaa</p>
+                                                    @endforeach --}}
+                                                    <select name="units[]" id="units" class="form-control">
+                                                        <option value="">Unidades</option>
+                                                    @foreach ($team as $teams)
+                                                        <option value="{{$teams}}"{{($teams==$options)? 'selected':'' }}>{{$teams->unit->id}}</option>
+                                                     @endforeach
+                                                    </select>
+
+                                                 {{-- $months = array("Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"); ?>
+                                                 <?php $options=$patient_data->month ?> 
+                                                 @if($patient_data->month) 
+                                                 <select id="expiry_month" name="month" class="form-control-sm">
+                                                     @foreach($months as $month) 
+                                                     <option value="{{$month}}"{{($month==$options)? 'selected':'' }}>{{$month}}</option>
+                                                     @endforeach
+                                                     </select> @endif <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span> </div> --}}
+
+                                                </div>
+
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="agencia" class="form-label">Agencia</label>
-                                                <input type="text" name="agency" id="agency" class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="conta" class="form-label">Conta</label>
-                                                <input type="text" name="checkingAccount" id="checkingAccount"
-                                                    class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="digito" class="form-label">Dígito</label>
-                                                <input type="text" name="typecc" id="typecc" class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="codigo" class="form-label">Código</label>
-                                                <input type="text" name="bankCode" id="bankCode" class="form-control">
-                                            </div>
+
                                             <div class="row">
                                                 <div class="col text-center">
                                                     <button type="submit" class="btn btn-primary">Salvar</button>
                                                 </div>
                                             </div>
-
 
                                         </form>
                                     </div>
@@ -76,13 +84,15 @@
         {{-- <div class="w-100 h-100 bg-white"> --}}
         {{-- <div class="container "> --}}
 
+          {{ dd($unit->name);}} 
+
         <div class="row ">
             <div class="col-8">
                 <form action="" class="form-group ">
                     <div class="input-group mb-3">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1"><i
                                 class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                        <input type="text" class="form-control" placeholder="Buscar contas..."
+                        <input type="text" class="form-control" placeholder="Buscar disciplinas..."
                             aria-describedby="button-addon1">
                     </div>
                 </form>
@@ -100,24 +110,16 @@
         <div class="table-responsive m-3">
             <table class="table">
                 <thead>
-                    {{-- <tr> --}}
-                    <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Agência</th>
-                    <th scope="col">Conta</th>
-                    <th scope="col">Dígito</th>
-                    <th scope="col">Código</th>
-                    {{-- </tr> --}}
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Unidade</th>
+
+
                 </thead>
                 <tbody>
-                    @forelse  ($cashAccount as $cashAccounts)
+                    @forelse ($team as $teams)
                         <tr class="">
-                            <td scope="row">{{ $cashAccounts->id }}</td>
-                            <td scope="row">{{ $cashAccounts->bankName }}</td>
-                            <td scope="row">{{ $cashAccounts->agency }}</td>
-                            <td scope="row">{{ $cashAccounts->checkingAccount }}</td>
-                            <td scope="row">{{ $cashAccounts->typecc }}</td>
-                            <td scope="row">{{ $cashAccounts->bankCode }}</td>
+                            <td scope="row">{{ $teams->user->id }}</td>
+                            <td scope="row">{{ $teams->unit->id }}</td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-white" style="border:none;" id="triggerId"
@@ -126,16 +128,13 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
 
-                                        <a class="dropdown-item"
-                                            href="{{ route('cashAccounts.edit', $cashAccounts->id) }}">Editar</a>
-                                        <form action="{{ route('cashAccounts.destroy', $cashAccounts->id) }}"
-                                            method="post">
+                                        <a class="dropdown-item" href="{{ route('teams.edit', $teams->id) }}">Editar</a>
+                                        <form action="{{ route('teams.destroy', $teams) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="dropdown-item">Deletar</button>
                                         </form>
 
-                                        {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
                                     </div>
                                 </div>
                             </td>
@@ -147,7 +146,6 @@
         </div>
         {{-- </div> --}}
     </div>
-
 
     <script>
         function mostrar_modal() {

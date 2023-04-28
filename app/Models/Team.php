@@ -1,27 +1,40 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
-class Team extends Model
+return new class extends Migration
 {
-    use HasFactory;
-
-    public function unit(): BelongsTo
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
     {
-        return $this->belongsTo(Unit::class);
+        Schema::create('teams', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units');
+
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+
+            $table->timestamps();
+        });
     }
 
-    public function user(): BelongsTo
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
-        return $this->belongsTo(User::class);
+        Schema::dropIfExists('teams');
     }
-
-    protected $fillable = [
-        'unit_id',
-        'user_id',
-    ];
-}
+};
