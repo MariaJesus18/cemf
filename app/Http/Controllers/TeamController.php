@@ -14,18 +14,14 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $unit , $team;
-
-     public function __construct(Team $team, Unit $unit){
-        $this->team = $team;
-        $this->unit = $unit;
-    }
+    
 
     public function index(Request $request)
     {
         return view('team.index', [
             'team' => Team::all(),
             'unit' => Unit::all(),
+            'user' => User::all(),
         ]);
 
         // return view('typeRelease.index', [
