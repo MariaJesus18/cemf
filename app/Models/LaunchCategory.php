@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class LaunchCategory extends Model
 {
     use HasFactory;
+    protected $table = 'launch_categorys';
 
-    protected $fillable=[
+    protected $fillable = [
         'categoryType',
         // 'categoriapai',
         'title',

@@ -14,7 +14,7 @@ class ModalityController extends Controller
      */
     public function index()
     {
-        //
+        return view('modalities.index', ['modalities' => Modality::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class ModalityController extends Controller
      */
     public function create()
     {
-        //
+        return view('modalities.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class ModalityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Modality::create($request->all());
+        return redirect(url('modalities'));
     }
 
     /**
@@ -46,14 +47,14 @@ class ModalityController extends Controller
      */
     public function show(Modality $modality)
     {
-        //
+        return view('modalities.show', ['modality' => $modality]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Modality  $modality
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response    
      */
     public function edit(Modality $modality)
     {
@@ -69,7 +70,8 @@ class ModalityController extends Controller
      */
     public function update(Request $request, Modality $modality)
     {
-        //
+        $modality->update($request->all());
+        return redirect(url('modalities'));
     }
 
     /**
@@ -80,6 +82,7 @@ class ModalityController extends Controller
      */
     public function destroy(Modality $modality)
     {
-        //
+        $modality->delete();
+        return redirect(url('modalities'));
     }
 }

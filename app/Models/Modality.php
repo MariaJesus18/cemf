@@ -9,9 +9,9 @@ class Modality extends Model
 {
     use HasFactory;
 
-    protected $table ="modalities";
+    protected $table = "modalities";
 
-    protected $fillable =[
+    protected $fillable = [
         'occurrencetype',
         'name',
     ];

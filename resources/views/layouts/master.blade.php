@@ -254,8 +254,8 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="" class="menu-link">
-                        <div data-i18n="Without navbar">Ação</div>
+                      <a href="{{url('modalities')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Modalidades</div>
                       </a>
               <!-- configurar link -->
                       <a href="" class="menu-link">
@@ -361,11 +361,11 @@
                   <ul class="menu-sub">
             <!-- configurar link -->
                     <a href="{{route('covenants.index')}}" class="menu-link">
-                      <div data-i18n="Without navbar">Convênios</div>
+                      <div data-i18n="Without navbar">Teste de Convênios</div>
                     </a>
             <!-- configurar link -->
-                    <a href="" class="menu-link">
-                      <div data-i18n="Without navbar">Ação</div>
+                    <a href="{{url('lcategories')}}" class="menu-link">
+                      <div data-i18n="Without navbar">Teste de Categorias de Lançamento</div>
                     </a>
                   </ul>
                 </li>

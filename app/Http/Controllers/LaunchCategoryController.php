@@ -14,7 +14,7 @@ class LaunchCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('launchcategory.index', ['launchCategories' => LaunchCategory::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class LaunchCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('launchcategory.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class LaunchCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        LaunchCategory::create($request->all());
+        return redirect(url('lcategories'));
     }
 
     /**
@@ -44,9 +45,9 @@ class LaunchCategoryController extends Controller
      * @param  \App\Models\LaunchCategory  $launchCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(LaunchCategory $launchCategory)
+    public function show(LaunchCategory $lcategory)
     {
-        //
+        return view('launchcategory.show', ['launchCategory' => $lcategory]);
     }
 
     /**
@@ -67,9 +68,10 @@ class LaunchCategoryController extends Controller
      * @param  \App\Models\LaunchCategory  $launchCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LaunchCategory $launchCategory)
+    public function update(Request $request, LaunchCategory $lcategory)
     {
-        //
+        $lcategory->update($request->all());
+        return redirect(url('lcategories'));
     }
 
     /**
@@ -80,6 +82,7 @@ class LaunchCategoryController extends Controller
      */
     public function destroy(LaunchCategory $launchCategory)
     {
-        //
+        $launchCategory->delete();
+        return redirect(url('lcategories'));
     }
 }
