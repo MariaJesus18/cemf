@@ -23,10 +23,6 @@ class TeamController extends Controller
             'unit' => Unit::all(),
             'user' => User::all(),
         ]);
-
-        // return view('typeRelease.index', [
-        //     'typeRelease' => TypeRelease::all()
-        // ]);
     }
 
     /**
@@ -69,9 +65,10 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        
-        return view('teams.edit', [
-            'team' => Team::find($team->id)
+        return view('team.edit', [
+            'team' => Team::find($team->id),
+            'unit' => Unit::all(),
+            'user' => User::all(),
         ]);
     }
 
@@ -84,7 +81,7 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-
+        $team = Team::find($team->id);
         $team->update($request->all());
 
         return redirect('/teams');
@@ -98,6 +95,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect('/teams');
     }
 }

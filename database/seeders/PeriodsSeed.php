@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Shift;
+use App\Models\Period;
+use Illuminate\Support\Facades\Hash;
 
-class ShiftSeeder extends Seeder
+class PeriodsSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +16,14 @@ class ShiftSeeder extends Seeder
      */
     public function run()
     {
-        Shift::create([
-            'name' => "Manhã",
+        Period::create([
+            'title' => "Anual",
         ]);
-        Shift::create([
-            'name' => "Tarde",
+        Period::create([
+            'title' => "Semestral",
         ]);
-        Shift::create([
-            'name' => "Noite",
+        Period::create([
+            'title' => "Trimestral",
         ]);
     }
 }
