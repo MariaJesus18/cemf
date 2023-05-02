@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Serie;
 
-class SeriesSeeder extends Seeder
+class SeriesSeed extends Seeder
 {
     /**
      * Run the database seeds.

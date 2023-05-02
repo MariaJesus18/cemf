@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('typecc');
             $table->string('bankName');
             // $table->string('title');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -339,7 +339,7 @@
 
                   <ul class="menu-sub">
             <!-- configurar link -->
-                    <a href="typeReleases" class="menu-link">
+                    <a href="{{route('typeReleases.index')}}" class="menu-link">
                       <div data-i18n="Without navbar">Tipo de Lançamentos</div>
                     </a>
             <!-- configurar link -->
@@ -362,6 +362,27 @@
             <!-- configurar link -->
                     <a href="{{route('covenants.index')}}" class="menu-link">
                       <div data-i18n="Without navbar">Convênios</div>
+                    </a>
+            <!-- configurar link -->
+                    <a href="" class="menu-link">
+                      <div data-i18n="Without navbar">Ação</div>
+                    </a>
+                  </ul>
+                </li>
+            </ul>
+
+            <ul class="menu-sub">                
+                <li class="menu-item">
+            <!-- configurar link -->
+                  <a href="" class="menu-link menu-toggle">
+                    <!-- <i class="menu-icon tf-icons fa-solid fa-gear"></i> -->
+                    <div data-i18n="Layouts">Equipe</div>
+                  </a>
+
+                  <ul class="menu-sub">
+            <!-- configurar link -->
+                    <a href="{{route('teams.index')}}" class="menu-link">
+                      <div data-i18n="Without navbar">Equipe</div>
                     </a>
             <!-- configurar link -->
                     <a href="" class="menu-link">

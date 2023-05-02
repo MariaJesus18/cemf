@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsersSeed::class,
+            PaymentMethodsSeed::class,
+            PeriodsSeed::class,
+            SeriesSeed::class,
+            ShiftSeed::class,
         ]);
     }
 }
