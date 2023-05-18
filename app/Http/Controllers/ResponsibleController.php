@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Responsible;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ResponsibleController extends Controller
@@ -12,9 +13,14 @@ class ResponsibleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Responsible $responsible, $id)
     {
-        //
+        $responsible = Responsible::findOrFail($id);
+        $userCreator = User::where('id', $responsible->user_id)->first()->toArray();
+        return view('responsibles.index', [
+            'responsible' => Responsible::all(),
+            'userCreator' => $userCreator
+        ]);
     }
 
     /**
@@ -35,16 +41,18 @@ class ResponsibleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        responsible::create($request->all());
+
+        return redirect('/responsibles');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Responsible  $responsible
+     * @param  \App\Models\responsible  $responsible
      * @return \Illuminate\Http\Response
      */
-    public function show(Responsible $responsible)
+    public function show(responsible $responsible)
     {
         //
     }
@@ -52,34 +60,42 @@ class ResponsibleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Responsible  $responsible
+     * @param  \App\Models\responsible  $responsible
      * @return \Illuminate\Http\Response
      */
-    public function edit(Responsible $responsible)
+    public function edit(responsible $responsible)
     {
-        //
+        return view('responsibles.edit', [
+            'responsible' => responsible::find($responsible->id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Responsible  $responsible
+     * @param  \App\Models\responsible  $responsible
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Responsible $responsible)
+    public function update(Request $request, responsible $responsible)
     {
-        //
+        $responsible = $responsible::find($responsible->id);
+
+        $responsible->update($request->all());
+
+        return redirect('/responsibles');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Responsible  $responsible
+     * @param  \App\Models\responsible  $responsible
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Responsible $responsible)
+    public function destroy(responsible $responsible)
     {
-        //
+        $responsible->delete();
+
+        return redirect('/responsibles');
     }
 }

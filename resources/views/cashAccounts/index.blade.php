@@ -25,7 +25,9 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar Conta</h5>
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button style="background-color: transparent; border:none;" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
                         </div>
                         <div class="modal-body">
                             <div class="container-xxl">
@@ -70,8 +72,6 @@
         </div>
     </div>
 
-    {{-- <div class="w-100 h-100 bg-white"> --}}
-    {{-- <div class="container "> --}}
 
     <div class="row ">
         <div class="col-8">
