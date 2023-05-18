@@ -129,8 +129,8 @@
             <li class="menu-item">
               <!-- configurar link -->
               <a
-                href=""
-                target="_blank"
+                href="{{route('students.index')}}"
+                {{-- target="_blank" --}}
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons fa-solid fa-user"></i>
