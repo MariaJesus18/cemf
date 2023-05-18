@@ -8,4 +8,4 @@ Route::view('alunos/include', 'students.inclusaoResponsavel');
 Route::view('alunos/nota', 'students.inclusaoNota');
 
 
-Route::resource('alunos', StudentController::class);
+Route::resource('students', StudentController::class);
