@@ -21,8 +21,6 @@ class Responsible extends Model
     {
         return $this->belongsTo(Studend::class);
     }
-
-
     public function creatoruser(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -35,11 +33,12 @@ class Responsible extends Model
 
     protected $fillable=[
         'name',
-        'studend_id',
+       // 'studend_id',
         'cnpj',
+       
         'observation',
-        'creatoruser_id',
-        'editoruser_id',
+        // 'creatoruser_id',
+        // 'editoruser_id',
         'cpf',  
         'telephone1',  
         'telephone2',  
@@ -49,7 +48,10 @@ class Responsible extends Model
         'complement',  
         'city',  
         'state',
-
+        'relative',
+        'invoicing',
+        'email',
+        'cep',
     ];
 
 }

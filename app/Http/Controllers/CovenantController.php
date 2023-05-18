@@ -14,7 +14,7 @@ class CovenantController extends Controller
      */
     public function index()
     {
-        return view('covenants.index', ['covenants' => Covenant::all()]);
+        return view('convenants.index', ['covenants' => Covenant::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class CovenantController extends Controller
      */
     public function create()
     {
-        return view('covenants.create');
+        return view('convenants.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class CovenantController extends Controller
      */
     public function show(Covenant $covenant)
     {
-        return view('covenants.show', ['covenant' => $covenant]);
+        return view('convenants.show', ['covenant' => $covenant]);
     }
 
     /**

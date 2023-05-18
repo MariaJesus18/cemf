@@ -5,7 +5,7 @@
 @endsection
 
 @section('layout-content')
-<form method="post" action="{{route('aluno.cadastro')}}">
+<form method="post" action="{{route('alunos.store')}}">
 @csrf
 
 <div class="container-xxl">

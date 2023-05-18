@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Unit;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class TeamController extends Controller
 {
@@ -12,9 +14,15 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+
+    public function index(Request $request)
     {
-        //
+        return view('team.index', [
+            'team' => Team::all(),
+            'unit' => Unit::all(),
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -22,9 +30,8 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
     }
 
     /**
@@ -35,7 +42,8 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Team::create($request->all());
+        return redirect('/teams');
     }
 
     /**
@@ -57,7 +65,11 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return view('team.edit', [
+            'team' => Team::find($team->id),
+            'unit' => Unit::all(),
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -69,7 +81,10 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $team = Team::find($team->id);
+        $team->update($request->all());
+
+        return redirect('/teams');
     }
 
     /**
@@ -80,6 +95,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect('/teams');
     }
 }

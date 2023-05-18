@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('launchs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('contract'); //idmodalidade
-            $table->foreign('contract')->references('id')->on('contracts');
+            // $table->unsignedBigInteger('contract'); //idmodalidade
+            // $table->foreign('contract')->references('id')->on('contracts');
+
+            $table->foreignId('contract_id')->constrained('contracts')->onDeleteCascade('cascade');
 
             $table->unsignedBigInteger('student'); //idstudent
             $table->foreign('student')->references('id')->on('students');
@@ -24,17 +26,17 @@ return new class extends Migration
             $table->unsignedBigInteger('supplier'); //idsupplier
             $table->foreign('supplier')->references('id')->on('suppliers');
 
-            $table->unsignedBigInteger('cashAccount'); //idocashAccount
-            $table->foreign('cashAccount')->references('id')->on('cash_accounts');
+            $table->unsignedBigInteger('cash_accounts'); //idocashAccount
+            $table->foreign('cash_accounts')->references('id')->on('cash_accounts');
 
-            $table->unsignedBigInteger('type'); //idtype 
-            $table->foreign('type')->references('id')->on('posting_attachments');
+            $table->unsignedBigInteger('type_releases'); //idtype
+            $table->foreign('type_releases')->references('id')->on('type_releases');
 
             $table->unsignedBigInteger('category'); //idcategory
             $table->foreign('category')->references('id')->on('launch_categorys');
 
-            $table->unsignedBigInteger('paymentMethod'); //idformapgto
-            $table->foreign('paymentMethod')->references('id')->on('payment_methods');
+            $table->unsignedBigInteger('payment_methods'); //idformapgto
+            $table->foreign('payment_methods')->references('id')->on('payment_methods');
 
             $table->date('expiration');
             $table->date('lowDate');

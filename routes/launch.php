@@ -2,5 +2,5 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('lancamentos', 'lancamentos.lancamento');
-Route::view('lancamentos/incluir', 'lancamentos.inclusaoLancamento');
+Route::view('launchs', 'launchs.index');
+Route::view('launchs/create', 'launchs.create');

@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cash_accounts', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bankCode');
-            $table->unsignedBigInteger('agency');
-            $table->unsignedBigInteger('checkingAccount');
-            $table->unsignedBigInteger('typecc');
-            $table->string('bankName');
-            $table->string('title');
+            $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cash_accounts');
+        Schema::dropIfExists('subjects');
     }
 };

@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
+            // $table->unsignedBigInteger('cnpj');
+            $table->foreignId('responsible')->constrained('responsibles');
+            
             $table->unsignedBigInteger('cpf');
             $table->unsignedBigInteger('telephone1');
             $table->unsignedBigInteger('telephone2');

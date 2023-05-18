@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('studend_id');
-            $table->foreign('studend_id')->references('id')->on('students');
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('students');
 
 
             $table->unsignedBigInteger('modalitiy_id');
@@ -27,8 +27,8 @@ return new class extends Migration
             $table->foreign('unit_id')->references('id')->on('units');
 
 
-            $table->unsignedBigInteger('covenant_id');
-            $table->foreign('covenant_id')->references('id')->on('covenants');
+            $table->unsignedBigInteger('convenant_id');
+            $table->foreign('convenant_id')->references('id')->on('covenants');
 
 
             $table->string('value');

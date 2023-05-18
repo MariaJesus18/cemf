@@ -27,14 +27,11 @@
                         <div class="col-xl">
 
                             <div class="card-body">
-
-
-
                                 <div class="mb-3">
                                     <label for="unit" class="form-label">Unidade</label>
                                     <select class="form-select" id="unit" aria-label="Default select example"
-                                        name="">
-                                        <option value="Sede">?</option>
+                                        name="unit">
+                                        <option value="">?</option>
                                         <option value="">?</option>
                                     </select>
                                 </div>
@@ -42,15 +39,15 @@
                                 <div class="mb-3">
                                     <label for="modality" class="form-label">Modalidade</label>
                                     <select class="form-select" id="modality" aria-label="Default select example"
-                                        name="">
+                                        name="modality">
                                         <option value="">?</option>
                                         <option value="">?</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="agreement" class="form-label">Convênio</label>
-                                    <select class="form-select" id="agreement" aria-label="Default select example"
-                                        name="">
+                                    <label for="covenants" class="form-label">Convênio</label>
+                                    <select class="form-select" id="covenants" aria-label="Default select example"
+                                        name="covenants">
                                         <option value="">?</option>
                                         <option value="">?</option>
                                     </select>
@@ -78,9 +75,9 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="date" class="form-label">Data do 1° Vencimento</label>
-                                    <select class="form-select" id="date" aria-label="Default select example"
-                                        name="">
+                                    <label for="due_date" class="form-label">Data do 1° Vencimento</label>
+                                    <select class="form-select" id="due_date" aria-label="Default select example"
+                                        name="due_date">
                                         <option value="">?</option>
                                         <option value="">?</option>
                                     </select>
@@ -96,7 +93,7 @@
                                 <div class="mb-3">
                                     <label for="shift" class="form-label">Turno</label>
                                     <select class="form-select" id="shift" aria-label="Default select example"
-                                        name="">
+                                        name="shift">
                                         <option value="">?</option>
                                         <option value="">?</option>
                                     </select>
@@ -104,7 +101,7 @@
                                 <div class="mb-3">
                                     <label for="series" class="form-label">Série</label>
                                     <select class="form-select" id="series" aria-label="Default select example"
-                                        name="">
+                                        name="series">
                                         <option value="">?</option>
                                         <option value="">?</option>
                                     </select>
@@ -121,19 +118,19 @@
                                     <p class="h3">Disciplinas</p>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="Subjects">
+                                        <input class="form-check-input" type="checkbox" value="" id="Subjects" name="Subjects">
                                         <label class="form-check-label" for="Subjects">
                                             Lingua Portuguesa
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="Subjects">
+                                        <input class="form-check-input" type="checkbox" value="" id="Subjects"  name="Subjects">
                                         <label class="form-check-label" for="Subjects">
                                             Matemática
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="Subjects">
+                                        <input class="form-check-input" type="checkbox" value="" id="Subjects" name="Subjects">
                                         <label class="form-check-label" for="Subjects">
                                             História
                                         </label>

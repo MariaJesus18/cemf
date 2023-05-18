@@ -14,7 +14,9 @@ class TypeReleaseController extends Controller
      */
     public function index()
     {
-        //
+        return view('typeRelease.index', [
+            'typeRelease' => TypeRelease::all()
+        ]);
     }
 
     /**
@@ -22,9 +24,9 @@ class TypeReleaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('typeRelease.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class TypeReleaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TypeRelease::create($request->all());
+
+        return redirect(url('typeReleases'));
+
     }
 
     /**
@@ -57,7 +62,9 @@ class TypeReleaseController extends Controller
      */
     public function edit(TypeRelease $typeRelease)
     {
-        //
+        return view('typeRelease.edit', [
+            'typeRelease' => TypeRelease::find($typeRelease->id)
+        ]);
     }
 
     /**
@@ -69,7 +76,11 @@ class TypeReleaseController extends Controller
      */
     public function update(Request $request, TypeRelease $typeRelease)
     {
-        //
+        $typeRelease = TypeRelease::find($typeRelease->id);
+
+        $typeRelease->update($request->all());
+
+        return redirect('/typeReleases');
     }
 
     /**
@@ -80,6 +91,8 @@ class TypeReleaseController extends Controller
      */
     public function destroy(TypeRelease $typeRelease)
     {
-        //
+        $typeRelease->delete();
+
+        return redirect('/typeReleases');
     }
 }

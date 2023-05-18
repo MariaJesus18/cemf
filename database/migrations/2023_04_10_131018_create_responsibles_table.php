@@ -27,12 +27,20 @@ return new class extends Migration
             $table->text('complement');
             $table->text('city');
             $table->text('state');
+            $table->string('relative');
+            $table->string('invoicing');
+            $table->string('email');
+            $table->string('cep');
 
-            $table->unsignedBigInteger('creatoruser_id');
-            $table->foreign('creatoruser_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('editoruser_id');
-            $table->foreign('editoruser_id')->references('id')->on('users');
+            // $table->unsignedBigInteger('studend_id');
+            // $table->foreign('studend_id')->references('id')->on('students');
+
+            // $table->unsignedBigInteger('creatoruser_id');
+            // $table->foreign('creatoruser_id')->references('id')->on('users');
+
+            // $table->unsignedBigInteger('editoruser_id');
+            // $table->foreign('editoruser_id')->references('id')->on('users');
 
             $table->timestamps();
         });

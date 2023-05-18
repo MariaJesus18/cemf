@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('covenants', function (Blueprint $table) {
+        Schema::create('cash_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("discount");
-
+            $table->unsignedBigInteger('bankCode');
+            $table->unsignedBigInteger('agency');
+            $table->unsignedBigInteger('checkingAccount');
+            $table->unsignedBigInteger('typecc');
+            $table->string('bankName');
+            // $table->string('title');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('covenants');
+        Schema::dropIfExists('cash_accounts');
     }
 };
