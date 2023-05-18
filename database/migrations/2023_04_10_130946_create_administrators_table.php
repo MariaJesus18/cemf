@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('administrators', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_profile');
-            $table->string('profileName');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('profileName')->default('admin');
+
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@
 @section('layout-content')
 
 <form id="formAuthentication" class="mb-3" action="{{route('users.update',['user'=>$user->id])}}" method="POST">
+    @method('put')
     @csrf
     <div class="container-xxl  ">
         <div class="row justify-content-center align-items-center g-2">
@@ -89,6 +90,35 @@
                 </select>
             </div>
         
+            @if (Auth::user()->type==1)
+                <div class="mb-3">
+                    <label for="supplier" class="form-label">Tipo de Acesso</label>
+                    <select class="form-select" id="supplier" name="type" aria-label="Default select example">
+                        @switch($user->type)
+                            @case(1)
+                            <option value="1">Administrador</option>
+                            <option value="2">Gerente</option>
+                            <option value="3">Financeiro</option>
+                            @break
+                    
+                            @case(2)
+                            <option value="2">Gerente</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Financeiro</option>
+                            @break
+                        
+                            @case(3)
+                            <option value="3">Financeiro</option>
+                            <option value="2">Gerente</option>
+                            <option value="1">Administrador</option>
+                            @break
+                        @endswitch
+
+
+                    </select>
+                </div>
+            @endif
+
         </div>
     </div>
 

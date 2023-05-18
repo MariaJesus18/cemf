@@ -158,26 +158,38 @@
                 <i class="menu-icon tf-icons fa-solid fa-gear"></i>
                 <div data-i18n="Layouts">Globais</div>
               </a>
-
-              <ul class="menu-sub">                
-                  <li class="menu-item">
-              <!-- configurar link -->
-                    <a href="" class="menu-link menu-toggle">
-                      <!-- <i class="menu-icon tf-icons fa-solid fa-gear"></i> -->
-                      <div data-i18n="Layouts">Usuários</div>
-                    </a>
-
-                    <ul class="menu-sub">
-              <!-- configurar link -->
-                      <a href="{{route('users.index')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Usuários</div>
-                      </a>
-                      <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Ação</div>
-                      </a>
-                    </ul>
-                  </li>
-              </ul>
+    
+              @switch(Auth::user()->type)
+              @case(0)
+                  @break
+                  
+              @case(1 || 2)
+        
+                  <ul class="menu-sub">                
+                      <li class="menu-item">
+                  <!-- configurar link -->
+                        <a href="" class="menu-link menu-toggle">
+                          <!-- <i class="menu-icon tf-icons fa-solid fa-gear"></i> -->
+                          <div data-i18n="Layouts">Usuários</div>
+                        </a>
+    
+                        <ul class="menu-sub">
+                  <!-- configurar link -->
+                          <a href="{{route('users.index')}}" class="menu-link">
+                            <div data-i18n="Without navbar">Usuários</div>
+                          </a>
+                          <a href="layouts-without-navbar.html" class="menu-link">
+                            <div data-i18n="Without navbar">Ação</div>
+                          </a>
+                        </ul>
+                      </li>
+                  </ul>
+                  @break
+      
+              @default
+                  
+              @endswitch
+      
 
               <ul class="menu-sub">                
                   <li class="menu-item">
@@ -395,7 +407,7 @@
             </li>
           </ul>
 
-
+{{--  --}}
           
           <!-- configurar link -->
           <div class="container mb-3">
