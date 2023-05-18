@@ -411,7 +411,6 @@
           
           <!-- configurar link -->
           <div class="container mb-3">
-            <a class="dropdown-item" href="">
               <!-- <i class="bx bx-power-off me-2"></i> -->
               <a href="{{url('logout')}}">
                 <i class="menu-icon tf-icons fa-solid fa-right-from-bracket align-middle"></i>
