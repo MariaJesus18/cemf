@@ -14,12 +14,24 @@
                 <h1 class="float-start">Unidades</h1>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center g-2 mb-3">
-            <div class="col">
-                <a href="{{route('units.create')}}" name="download" id="download" class="btn float-end btn-primary" style="color:white; margin-right:1rem; font-size:13px;">Adicionar Unidade</a>
-            </div>
-        </div>
+        
+        @switch(Auth::user()->type)
+        @case(0)
+            @break
+            
+        @case(1 || 2)
 
+            <div class="row justify-content-center align-items-center g-2 mb-3">
+                <div class="col">
+                    <a href="{{route('units.create')}}" name="download" id="download" class="btn float-end btn-primary" style="color:white; margin-right:1rem; font-size:13px;">Adicionar Unidade</a>
+                </div>
+            </div>
+
+            @break
+
+        @default
+            
+    @endswitch
 
 
     {{-- <div class="w-100 h-100 bg-white"> --}}
@@ -54,18 +66,30 @@
                             <td scope="row">{{$unit->name}}</td>
                             <td scope="row">{{$unit->city}}</td>
                             <td scope="row">{{$unit->state}}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
-                                        <a class="dropdown-item" href="{{route('units.show',['unit'=>$unit->id])}}">Visualizar</a>
-                                        <a class="dropdown-item" href="{{url('unit',['unit'=>$unit->id])}}">Apagar</a> 
-                                        {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
-                                    </div>
-                                </div>                                
-                            </td>
+
+                            @switch(Auth::user()->type)
+                                @case(0)
+                                    @break
+                                    
+                                @case(1 || 2)
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
+                                            <a class="dropdown-item" href="{{route('units.show',['unit'=>$unit->id])}}">Visualizar</a>
+                                            <a class="dropdown-item" href="{{url('unit',['unit'=>$unit->id])}}">Apagar</a> 
+                                            {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
+                                        </div>
+                                    </div>                                
+                                </td>
+                                    @break
+
+                                @default
+                                    
+                            @endswitch
+
                         </tr>
                     @empty
                     @endforelse

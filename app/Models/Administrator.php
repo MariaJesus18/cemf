@@ -9,9 +9,8 @@ class Administrator extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'id_Profile',
+    protected $fillable = [
+        'user_id',
         'profileName'
-     ];
- 
+    ];
 }

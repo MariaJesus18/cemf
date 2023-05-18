@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UnitController extends Controller
 {
@@ -24,6 +26,8 @@ class UnitController extends Controller
      */
     public function create()
     {
+        Gate::authorize('permission', Auth::id());
+
         return view('units.create');
     }
 
@@ -35,6 +39,8 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('permission', Auth::id());
+
         Unit::create($request->all());
         return redirect(url('units'));
     }
@@ -47,6 +53,8 @@ class UnitController extends Controller
      */
     public function show(Unit $unit)
     {
+        Gate::authorize('permission', Auth::id());
+
         return view('units.show', ['unit' => $unit]);
     }
 
@@ -70,6 +78,8 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
+        Gate::authorize('permission', Auth::id());
+
         $unit->update($request->all());
         return redirect(url('units'));
     }
@@ -82,6 +92,8 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
+        Gate::authorize('permission', Auth::id());
+
         $unit->delete();
         return redirect(url('units'));
     }

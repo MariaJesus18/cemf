@@ -4,15 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+    // public function promote(User $user)
+    // { //promover usuários
+    //     Gate::authorize('permission', Auth::user());
+    //     // return view('users.promote', ['user' => $user]);
+    // }
+
+
     public function activated()
     {
+        Gate::authorize('permission', Auth::user());
         return view('users.index', ['users' => \DB::table('users')->where('status', '=', true)->get()]);
     }
-
 
     // public function search(Request $request)
     // {
@@ -21,6 +30,7 @@ class UserController extends Controller
 
     public function disabled()
     {
+        Gate::authorize('isAdmin', Auth::user());
         return view('users.index', ['users' => \DB::table('users')->where('status', '=', false)->get()]);
     }
 
@@ -31,6 +41,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        Gate::authorize('permission', Auth::user());
         return view('users.index', ['users' => User::all()]);
     }
 
@@ -62,6 +73,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        Gate::authorize('permission', Auth::user());
         return view('users.show', ['user' => $user]);
     }
 
@@ -85,7 +97,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        return redirect(route('users.index'));
     }
 
     /**
@@ -96,6 +109,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        Gate::authorize('isAdmin', Auth::user());
     }
 }
