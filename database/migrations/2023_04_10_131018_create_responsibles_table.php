@@ -36,13 +36,14 @@ return new class extends Migration
             // $table->unsignedBigInteger('studend_id');
             // $table->foreign('studend_id')->references('id')->on('students');
 
-            // $table->unsignedBigInteger('creatoruser_id');
-            // $table->foreign('creatoruser_id')->references('id')->on('users');
+            $table->unsignedBigInteger('creatoruser_id');
+            $table->foreign('creatoruser_id')->references('id')->on('users');
 
-            // $table->unsignedBigInteger('editoruser_id');
-            // $table->foreign('editoruser_id')->references('id')->on('users');
+            $table->unsignedBigInteger('editoruser_id')->nullable();
+            $table->foreign('editoruser_id')->references('id')->on('users');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
