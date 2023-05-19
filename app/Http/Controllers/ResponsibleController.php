@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Responsible;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ResponsibleController extends Controller
 {
     /**
@@ -13,14 +13,11 @@ class ResponsibleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Responsible $responsible, $id)
+    public function index(Responsible $responsible)
     {
-        $responsible = Responsible::findOrFail($id);
-        $userCreator = User::where('id', $responsible->user_id)->first()->toArray();
         return view('responsibles.index', [
             'responsible' => Responsible::all(),
-            'userCreator' => $userCreator
-        ]);
+         ]);
     }
 
     /**
@@ -39,10 +36,13 @@ class ResponsibleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Responsible $responsible)
     {
-        responsible::create($request->all());
-
+         //  $userCreator = User::where('id', $responsible->creatoruser_id)->first()->toArray(); 
+        $user = auth()->user();
+        $responsible = $request->all();
+        $responsible['creatoruser_id'] = $user->id;
+        Responsible::create($responsible);
         return redirect('/responsibles');
     }
 
@@ -78,12 +78,19 @@ class ResponsibleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, responsible $responsible)
-    {
+    { 
+        $user = auth()->user();
         $responsible = $responsible::find($responsible->id);
-
+        $responsible['editoruser_id'] = $user->id;
         $responsible->update($request->all());
 
         return redirect('/responsibles');
+
+       
+        // $responsible = $request->all();
+        
+        // Responsible::create($responsible);
+        // return redirect('/responsibles');
     }
 
     /**

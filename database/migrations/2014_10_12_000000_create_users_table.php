@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('status');
             $table->integer('type');
-
             $table->string('telephone');
 
             // $table->unsignedBigInteger('unit_id');
