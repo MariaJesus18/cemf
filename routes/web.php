@@ -30,3 +30,4 @@ require __DIR__ . '/covenant.php';
 require __DIR__ . '/typeRelease.php';
 require __DIR__ . '/team.php';
 require __DIR__ . '/responsible.php';
+require __DIR__ . '/studentAttachments.php';
