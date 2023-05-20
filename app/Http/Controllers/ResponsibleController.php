@@ -6,6 +6,7 @@ use App\Models\Responsible;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class ResponsibleController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class ResponsibleController extends Controller
     {
         return view('responsibles.index', [
             'responsible' => Responsible::all(),
-         ]);
+        ]);
     }
 
     /**
@@ -36,9 +37,9 @@ class ResponsibleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Responsible $responsible)
+    public function store(Request $request, Responsible $responsible)
     {
-         //  $userCreator = User::where('id', $responsible->creatoruser_id)->first()->toArray(); 
+        //  $userCreator = User::where('id', $responsible->creatoruser_id)->first()->toArray(); 
         $user = auth()->user();
         $responsible = $request->all();
         $responsible['creatoruser_id'] = $user->id;
@@ -78,7 +79,7 @@ class ResponsibleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, responsible $responsible)
-    { 
+    {
         $user = auth()->user();
         $responsible = $responsible::find($responsible->id);
         $responsible['editoruser_id'] = $user->id;
@@ -86,9 +87,9 @@ class ResponsibleController extends Controller
 
         return redirect('/responsibles');
 
-       
+
         // $responsible = $request->all();
-        
+
         // Responsible::create($responsible);
         // return redirect('/responsibles');
     }
