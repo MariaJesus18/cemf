@@ -46,8 +46,8 @@
                                                     <label for="user" class="form-label">Aluno</label>
                                                     <select name="student" id="student" class="form-select form-select-lg mb-3">
 
-                                                        @foreach ($students as $student)
-                                                        <option value="{{ $student->id }}">{{ $student->name }}
+                                                        @foreach ($student as $students)
+                                                        <option value="{{ $students->id }}">{{ $students->name }}
                                                         </option>
                                                         @endforeach
                                                     </select>
@@ -111,34 +111,29 @@
 
         </thead>
         <tbody>
-            @forelse ($studentsAttachments as $studentsAttachment)
-            <tr class="">
-                <td scope="row">{{ $studentsAttachment->id }}</td>
-                <td scope="row">{{ $studentsAttachment->title }}</td>
+        @forelse ($studentsAttachment as $studentAttachments)
+                <tr class="">
+                    <td scope="row">{{ $studentAttachments->id }}</td>
+                    <td scope="row">{{ $studentAttachments->title }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
 
-                {{-- <td scope="row">{{ $studentsAttachment->invoicing }}</td>--}}
-
-                <td>
-                    <div class="btn-group">
-                        <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
-
-                            <a class="dropdown-item" href="{{ route('studentAttachments.edit', $studentsAttachment->id) }}">Editar</a>
-                            <form action="{{ route('studentAttachments.destroy', $studentsAttachment->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="dropdown-item">Deletar</button>
-                            </form>
-
-                            {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
+                                <a class="dropdown-item" href="{{ route('studentAttachments.edit', ['studentAttachment'=>$studentAttachments->id]) }}">Editar</a>
+                                <form action="{{ route('studentAttachments.destroy', $studentAttachments) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="dropdown-item">Deletar</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            @empty
-            @endforelse
+                    </td>
+                </tr>
+                @empty
+                @endforelse
         </tbody>
     </table>
 </div>

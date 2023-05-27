@@ -157,17 +157,17 @@
 
 </div>
 
-
 <div class="table-responsive m-3">
     <table class="table">
         <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Unidade</th>
-                <th scope="col">Status</th>
-            </tr>
+
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Unidade</th>
+            <th scope="col">Status</th>
+
+
         </thead>
         <tbody>
             @forelse ($students as $student )
@@ -183,29 +183,31 @@
                     @endif
                 </td>
                 <td>
-                        <div class="btn-group">
-                            <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
+                    <div class="btn-group">
+                        <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
 
-                                <a class="dropdown-item" href="{{ route('students.edit', $student->id) }}">Editar</a>
-                                <form action="{{ route('students.destroy', $student->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="dropdown-item">Deletar</button>
-                                </form>
+                            <a class="dropdown-item" href="{{ route('students.edit', $student->id) }}">Editar</a>
+                            <form action="{{ route('students.destroy', $student->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="dropdown-item">Deletar</button>
+                            </form>
 
-                                {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
-                            </div>
+                            {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
                         </div>
-                    </td>
+                    </div>
+                </td>
             </tr>
             @empty
             @endforelse
         </tbody>
     </table>
 </div>
+
+
 
 </div>
 

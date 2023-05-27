@@ -16,8 +16,8 @@ class StudentAttachmentsController extends Controller
     public function index()
     {
         return view('studentAttachments.index', [
-            'studentsAttachments' => StudentAttachments::all(),
-            'students' => Student::all(),
+            'studentsAttachment' => StudentAttachments::all(),
+            'student' => Student::all(),
         ]);
     }
 
@@ -37,62 +37,48 @@ class StudentAttachmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, StudentAttachments $StudentAttachments)
-    {
-        //  $userCreator = User::where('id', $StudentAttachments->creatoruser_id)->first()->toArray(); 
-        $user = auth()->user();
-        $StudentAttachments = $request->all();
-        $StudentAttachments['creatoruser_id'] = $user->id;
-        StudentAttachments::create($StudentAttachments);
-        return redirect('/StudentAttachments');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\StudentAttachments  $StudentAttachments
-     * @return \Illuminate\Http\Response
-     */
-    public function show(StudentAttachments $StudentAttachments)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\StudentAttachments  $StudentAttachments
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(StudentAttachments $StudentAttachments)
-    {
-        return view('StudentAttachments.edit', [
-            'StudentAttachments' => StudentAttachments::find($StudentAttachments->id)
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\StudentAttachments  $StudentAttachments
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, StudentAttachments $StudentAttachments)
-    {
-        $user = auth()->user();
-        $StudentAttachments = $StudentAttachments::find($StudentAttachments->id);
-        $StudentAttachments['editoruser_id'] = $user->id;
-        $StudentAttachments->update($request->all());
-
-        return redirect('/StudentAttachments');
+    public function store(Request $request, StudentAttachments $studentAttachment)
+{
+    //  $userCreator = User::where('id', $studentAttachment->creatoruser_id)->first()->toArray(); 
+    $user = auth()->user();
+    $studentAttachmentData = $request->all();
+    $studentAttachmentData['creatoruser_id'] = $user->id;
+    StudentAttachments::create($studentAttachmentData);
+    return redirect('/StudentAttachments');
+}
 
 
-        // $StudentAttachments = $request->all();
+/**
+ * Show the form for editing the specified resource.
+ *
+ * @param  \App\Models\StudentAttachments  $studentAttachment
+ * @return \Illuminate\Http\Response
+ */
+public function edit(StudentAttachments $studentAttachment)
+{
+    return view('StudentAttachments.edit', [
+        'studentAttachment' => StudentAttachments::find($studentAttachment->id),
+        'student' => Student::all()
+    ]);
 
-        // StudentAttachments::create($StudentAttachments);
-        // return redirect('/StudentAttachmentss');
-    }
+}
+
+
+/**
+ * Update the specified resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  \App\Models\StudentAttachments  $studentAttachment
+ * @return \Illuminate\Http\Response
+ */
+public function update(Request $request, StudentAttachments $studentAttachment)
+{
+    $user = auth()->user();
+    $studentAttachmentInstance = StudentAttachments::find($studentAttachment->id);
+    $studentAttachmentInstance->update($request->all());
+
+    return redirect('/studentAttachments');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -104,6 +90,6 @@ class StudentAttachmentsController extends Controller
     {
         $StudentAttachments->delete();
 
-        return redirect('/StudentAttachments');
+        return redirect('/studentAttachments');
     }
 }
