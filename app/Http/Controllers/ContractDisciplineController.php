@@ -35,7 +35,12 @@ class ContractDisciplineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ContractDiscipline::create([
+            'contract_id'=>$request->contract_id,
+            'subject_id'=>$request->subject_id,
+        ]); 
+
+        return redirect(route('/'));
     }
 
     /**
