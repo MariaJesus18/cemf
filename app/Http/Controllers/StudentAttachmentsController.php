@@ -38,14 +38,23 @@ class StudentAttachmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, StudentAttachments $studentAttachment)
-{
-    //  $userCreator = User::where('id', $studentAttachment->creatoruser_id)->first()->toArray(); 
-    $user = auth()->user();
-    $studentAttachmentData = $request->all();
-    $studentAttachmentData['creatoruser_id'] = $user->id;
-    StudentAttachments::create($studentAttachmentData);
-    return redirect('/StudentAttachments');
-}
+    {
+        $user = auth()->user();
+        $studentAttachmentData = $request->all();
+        $studentAttachmentData['creatoruser_id'] = $user->id;
+    
+        // Verificar se há um arquivo válido enviado
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $requestImage = $request->file('file'); // Corrigir chamada de método
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now"))  . "." . $extension;
+            $requestImage->move(public_path('image/studentAttachments'), $imageName);
+            $studentAttachmentData['file'] = $imageName; // Corrigir atribuição do nome do arquivo
+        }
+    
+        StudentAttachments::create($studentAttachmentData);
+        return redirect('/studentAttachments');
+    }
 
 
 /**
@@ -56,10 +65,7 @@ class StudentAttachmentsController extends Controller
  */
 public function edit(StudentAttachments $studentAttachment)
 {
-    return view('StudentAttachments.edit', [
-        'studentAttachment' => StudentAttachments::find($studentAttachment->id),
-        'student' => Student::all()
-    ]);
+
 
 }
 
@@ -73,11 +79,6 @@ public function edit(StudentAttachments $studentAttachment)
  */
 public function update(Request $request, StudentAttachments $studentAttachment)
 {
-    $user = auth()->user();
-    $studentAttachmentInstance = StudentAttachments::find($studentAttachment->id);
-    $studentAttachmentInstance->update($request->all());
-
-    return redirect('/studentAttachments');
 }
 
     /**
@@ -86,9 +87,9 @@ public function update(Request $request, StudentAttachments $studentAttachment)
      * @param  \App\Models\StudentAttachments  $StudentAttachments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentAttachments $StudentAttachments)
+    public function destroy(StudentAttachments $studentAttachment)
     {
-        $StudentAttachments->delete();
+        $studentAttachment->delete();
 
         return redirect('/studentAttachments');
     }
