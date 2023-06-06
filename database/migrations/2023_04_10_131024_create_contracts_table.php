@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('student_id')->default();
             $table->foreign('student_id')->references('id')->on('students');
 
 
@@ -53,6 +53,9 @@ return new class extends Migration
             // $table->unsignedBigInteger('subscription_id'); //valor da taxa de inscrição
             // $table->foreign('subscription_id')->references('id')->on('subscritions');
 
+            $table->string('discount');
+            $table->string('registrationFee');
+
 
 
             $table->unsignedBigInteger('formpayment_id'); //forma de pagamento
@@ -67,7 +70,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('editoruser_id');
             $table->foreign('editoruser_id')->references('id')->on('users');
-
+            $table->boolean('status');
 
             $table->timestamps();
         });

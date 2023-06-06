@@ -32,3 +32,5 @@ require __DIR__ . '/team.php';
 require __DIR__ . '/responsible.php';
 require __DIR__ . '/studentAttachments.php';
 require __DIR__ . '/logBook.php';
+require __DIR__ . '/contract.php';
+require __DIR__ . '/modality.php';
