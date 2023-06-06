@@ -10,6 +10,7 @@
 
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
+      
 
         <form class="" action="{{route('students.update', $student->id)}}" method="POST">
             @csrf

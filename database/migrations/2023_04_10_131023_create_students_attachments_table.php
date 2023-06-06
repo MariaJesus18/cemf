@@ -18,8 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('student'); //idstudent
             $table->foreign('student')->references('id')->on('students');
             $table->string('title');
+            $table->string('file');
             $table->unsignedBigInteger('creatoruser_id'); //idid_userCreator
             $table->foreign('creatoruser_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

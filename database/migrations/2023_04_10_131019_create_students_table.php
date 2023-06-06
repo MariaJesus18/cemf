@@ -42,6 +42,7 @@ return new class extends Migration
             $table->boolean('status');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
