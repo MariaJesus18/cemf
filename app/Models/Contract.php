@@ -21,9 +21,9 @@ class Contract extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function modalitie(): BelongsTo
+    public function modality(): BelongsTo
     {
-        return $this->belongsTo(Modalities::class);
+        return $this->belongsTo(Modality::class);
     }
 
     public function unit(): BelongsTo
@@ -62,9 +62,9 @@ class Contract extends Model
         return $this->belongsTo(FormPayment::class);
     }
 
-    public function subject(): BelongsTo
+    public function subjects()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsToMany(Subject::class);
     }
 
     public function creatoruser(): BelongsTo
@@ -81,14 +81,14 @@ class Contract extends Model
 
     protected $fillable = [
         'studend_id',
-        'modalitiy_id',
+        'modality_id',
         'unit_id',
         'covenant_id',
         'value',
         'discount',
         'school_id',
         'firstpaymentdate',
-        'responsiblepayment_id',
+        'responsible_id',
         'shift_id',
         'serie_id',
         'registrationFee', 

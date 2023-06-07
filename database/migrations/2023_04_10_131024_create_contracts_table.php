@@ -20,15 +20,15 @@ return new class extends Migration
             $table->foreign('student_id')->references('id')->on('students');
 
 
-            $table->unsignedBigInteger('modalitiy_id');
-            $table->foreign('modalitiy_id')->references('id')->on('modalities');
+            $table->unsignedBigInteger('modality_id');
+            $table->foreign('modality_id')->references('id')->on('modalitys');
 
             $table->unsignedBigInteger('unit_id');
             $table->foreign('unit_id')->references('id')->on('units');
 
 
-            $table->unsignedBigInteger('convenant_id');
-            $table->foreign('convenant_id')->references('id')->on('covenants');
+            $table->unsignedBigInteger('covenant_id');
+            $table->foreign('covenant_id')->references('id')->on('covenants');
 
 
             $table->string('value');
@@ -39,8 +39,8 @@ return new class extends Migration
 
             $table->date('firstpaymentdate');
 
-            $table->unsignedBigInteger('responsiblepayment_id');
-            $table->foreign('responsiblepayment_id')->references('id')->on('responsibles');
+            $table->unsignedBigInteger('responsible_id');
+            $table->foreign('responsible_id')->references('id')->on('responsibles');
 
             $table->unsignedBigInteger('shift_id');
             $table->foreign('shift_id')->references('id')->on('shifts');
@@ -62,15 +62,17 @@ return new class extends Migration
             $table->foreign('formpayment_id')->references('id')->on('payment_methods');
 
 
-            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('subject_id')->length(191);
             $table->foreign('subject_id')->references('id')->on('subjects');
+            
 
             $table->unsignedBigInteger('creatoruser_id');
             $table->foreign('creatoruser_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('editoruser_id');
+            $table->unsignedBigInteger('editoruser_id')->default();
             $table->foreign('editoruser_id')->references('id')->on('users');
             $table->boolean('status');
+            $table->string('observation');
 
             $table->timestamps();
         });
