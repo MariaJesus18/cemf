@@ -36,7 +36,7 @@ return new class extends Migration
             $table->unsignedBigInteger('creatoruser_id');
             $table->foreign('creatoruser_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('editoruser_id');
+            $table->unsignedBigInteger('editoruser_id')->nullable();
             $table->foreign('editoruser_id')->references('id')->on('users');
 
             $table->boolean('status'); //atiov | inativo
