@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\StudentAttachments;
+use App\Models\Launch;
+use App\Models\LaunchAttachments;
 use Illuminate\Http\Request;
 
-class StudentAttachmentsController extends Controller
+class LaunchAttachmentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('studentAttachments.index', [
-            'studentsAttachment' => StudentAttachments::all(),
-            'student' => Student::all(),
+        return view('LaunchAttachments.index', [
+            'launchAttachment' => LaunchAttachments::all(),
+            
         ]);
     }
 
@@ -40,30 +35,30 @@ class StudentAttachmentsController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-        $studentAttachmentData = $request->all();
-        $studentAttachmentData['creatoruser_id'] = $user->id;
+        $launchAttachmentsData = $request->all();
+        $launchAttachmentsData['creatoruser_id'] = $user->id;
     
         // Verificar se há um arquivo válido enviado
         if ($request->hasFile('file') && $request->file('file')->isValid()) {
             $requestImage = $request->file('file'); // Corrigir chamada de método
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now"))  . "." . $extension;
-            $requestImage->move(public_path('image/studentAttachments'), $imageName);
-            $studentAttachmentData['file'] = $imageName; // Corrigir atribuição do nome do arquivo
+            $requestImage->move(public_path('image/launchAttachments'), $imageName);
+            $launchAttachmentsData['file'] = $imageName; // Corrigir atribuição do nome do arquivo
         }
     
-        StudentAttachments::create($studentAttachmentData);
-        return redirect('/studentAttachments');
+        LaunchAttachments::create($launchAttachmentsData);
+        return redirect('/launchAttachments');
     }
 
 
 /**
  * Show the form for editing the specified resource.
  *
- * @param  \App\Models\StudentAttachments  $studentAttachment
+ * @param  \App\Models\LaunchAttachments  $launchAttachments
  * @return \Illuminate\Http\Response
  */
-public function edit(StudentAttachments $studentAttachment)
+public function edit(LaunchAttachments $launchAttachments)
 {
 
 
@@ -74,23 +69,23 @@ public function edit(StudentAttachments $studentAttachment)
  * Update the specified resource in storage.
  *
  * @param  \Illuminate\Http\Request  $request
- * @param  \App\Models\StudentAttachments  $studentAttachment
+ * @param  \App\Models\LaunchAttachments  $launchAttachments
  * @return \Illuminate\Http\Response
  */
-public function update(Request $request, StudentAttachments $studentAttachment)
+public function update(Request $request, LaunchAttachments $launchAttachments)
 {
 }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\StudentAttachments  $StudentAttachments
+     * @param  \App\Models\LaunchAttachments  $LaunchAttachments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentAttachments $studentAttachment)
+    public function destroy(LaunchAttachments $launchAttachment)
     {
-        $studentAttachment->delete();
+        $launchAttachment->delete();
 
-        return redirect('/studentAttachments');
+        return redirect('/launchAttachments');
     }
 }

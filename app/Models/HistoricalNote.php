@@ -10,22 +10,23 @@ class HistoricalNote extends Model
 {
     use HasFactory;
 
+    protected $table = 'historical_notas';
+
     protected $fillable = [
-        'contract',
-        'student',
-        'school',
-        'series',
-        'period',
+        'contract_id',
+        'student_id',
+        'school_id',
+        'serie_id',
+        'period_id',
         'year',
-        'subject',
+        'subject_id',
         'note',
-        'id_userCreator',
-        'creationDate',
+        'creatoruser_id',
     ];
 
-    public function contract(): BelongsTo
+    public function contract()
     {
-        return $this->belongsTo(Contract::class, 'contract');
+        return $this->belongsTo(Contract::class, 'contract_id');
     }
     public function student(): BelongsTo
     {
@@ -49,6 +50,6 @@ class HistoricalNote extends Model
     }
     public function userCreator(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_userCreator');
+        return $this->belongsTo(User::class, 'usercreator_id');
     }
 }
