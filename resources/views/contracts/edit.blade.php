@@ -143,22 +143,17 @@
 
                             <div class="card-body">
 
-                                <div class="mb-3">
-                                    <p class="h3">Disciplinas</p>
-
-                                    @foreach ($subject as $subjects)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $subjects->id }}"
-                                                id="subject_id" name="subject_id">
-                                            <label class="form-check-label" for="Subjects">
-                                                {{ $subjects->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-
-
-
-                                </div>
+                            <div class="mb-3">
+                                                                    <p class="h3">Disciplinas</p>
+                                                                    @foreach ($subjects as $subject)
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label" for="{{ $subject->id }}">
+                                                                            {{$subject->name}}
+                                                                        </label>
+                                                                        <input class="form-check-input" type="checkbox" value="{{ $subject->id }}" id="{{ $subject->id }}" name="subjects[]">
+                                                                    </div>
+                                                                    @endforeach
+                                                                </div>
 
 
                                 <div class="" style="margin-top: 66%">

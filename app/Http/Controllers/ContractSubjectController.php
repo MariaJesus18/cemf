@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContractDiscipline;
+use App\Models\ContractSubject;
 use Illuminate\Http\Request;
 
-class ContractDisciplineController extends Controller
+class ContractSubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ContractDisciplineController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ContractDiscipline  $contractDiscipline
+     * @param  \App\Models\ContractSubject  $ContractSubject
      * @return \Illuminate\Http\Response
      */
-    public function show(ContractDiscipline $contractDiscipline)
+    public function show(ContractSubject $ContractSubject)
     {
         //
     }
@@ -52,10 +52,10 @@ class ContractDisciplineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ContractDiscipline  $contractDiscipline
+     * @param  \App\Models\ContractSubject  $ContractSubject
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContractDiscipline $contractDiscipline)
+    public function edit(ContractSubject $ContractSubject)
     {
         //
     }
@@ -64,10 +64,10 @@ class ContractDisciplineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ContractDiscipline  $contractDiscipline
+     * @param  \App\Models\ContractSubject  $ContractSubject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContractDiscipline $contractDiscipline)
+    public function update(Request $request, ContractSubject $ContractSubject)
     {
         //
     }
@@ -75,10 +75,10 @@ class ContractDisciplineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ContractDiscipline  $contractDiscipline
+     * @param  \App\Models\ContractSubject  $ContractSubject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContractDiscipline $contractDiscipline)
+    public function destroy(ContractSubject $ContractSubject)
     {
         //
     }

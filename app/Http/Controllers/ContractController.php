@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Contract;
 use Illuminate\Http\Request;
-use App\Models\Unit;
-use App\Models\Modality;
-use App\Models\Covenant;
-use App\Models\Responsible;
-use App\Models\Shift;
-use App\Models\Serie;
-use App\Models\Student;
-use App\Models\PaymentMethod;
-use App\Models\School;
-use App\Models\Subject;
+use App\Http\Requests\Contract\UpdateContractRequest;
+use App\Models\{
+    Unit,Modality,Covenant,Responsible,Shift,Serie,Student,PaymentMethod,School,Subject
+};
 
 class ContractController extends Controller
+
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index()
     {
         return view('contracts.index', [
@@ -35,7 +31,7 @@ class ContractController extends Controller
             'student' => Student::all(),
             'paymentmethod' => PaymentMethod::all(),
             'school' => School::all(),
-            'subject' => Subject::all(),
+            'subjects' => Subject::all(),
         ]);    
     }
 
@@ -48,16 +44,21 @@ class ContractController extends Controller
     {
         //
     }
-    public function store(Request $request, Contract $contract)
+    public function store(Request $request)
     {
-        //  $userCreator = User::where('id', $contract->creatoruser_id)->first()->toArray(); 
         $user = auth()->user();
-        $contract = $request->all();
-        $contract['creatoruser_id'] = $user->id;
-        $contract['status'] = true;
-        Contract::create($contract);
+        $requestData = $request->all();
+        $requestData['creatoruser_id'] = $user->id;
+        $requestData['status'] = true;
+        $createdContract = Contract::create($requestData);
+        
+        foreach ($request->subjects as $subject) {
+            $createdContract->subjects()->attach($subject);
+        }
+        
         return redirect('/contracts');
     }
+    
     
     
     /**
@@ -79,7 +80,7 @@ class ContractController extends Controller
             'student' => Student::all(),
             'paymentmethod' => PaymentMethod::all(),
             'school' => School::all(),
-            'subject' => Subject::all(),
+            'subjects' => Subject::all(),
         ]);
     
     }
@@ -92,10 +93,16 @@ class ContractController extends Controller
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contract $contract)
+    public function update(UpdateContractRequest $request, Contract $contract)
     {
         $contractInstance = Contract::find($contract->id);
         $contractInstance->update($request->all());
+
+           if (!is_null($request->subjects)) {
+
+            UpdateContractRequest::dispatch($contract, $request);
+            
+        }
     
         return redirect('/contracts');
     }

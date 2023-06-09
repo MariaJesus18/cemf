@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contract extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
 
 
     /**
@@ -93,7 +95,7 @@ class Contract extends Model
         'serie_id',
         'registrationFee', 
         'formpayment_id',
-        'subject_id',    
+         
         'observation',
         'status',
         'creatoruser_id',
