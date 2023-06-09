@@ -96,17 +96,16 @@ class ContractController extends Controller
     public function update(UpdateContractRequest $request, Contract $contract)
     {
         $contractInstance = Contract::find($contract->id);
-        
+    
+        // Atualizar os dados do contrato
         $contractInstance->update($request->all());
-
-           if (!is_null($request->subjects)) {
-
-            UpdateContractRequest::dispatch($contract, $request);
-            
-        }
+    
+        // Atualizar as disciplinas do contrato
+        $contractInstance->subjects()->sync($request->subjects);
     
         return redirect('/contracts');
     }
+    
     
         /**
          * Remove the specified resource from storage.
