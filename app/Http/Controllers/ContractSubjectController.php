@@ -35,7 +35,7 @@ class ContractSubjectController extends Controller
      */
     public function store(Request $request)
     {
-        ContractDiscipline::create([
+        ContractSubject::create([
             'contract_id'=>$request->contract_id,
             'subject_id'=>$request->subject_id,
         ]); 

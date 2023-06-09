@@ -96,6 +96,7 @@ class ContractController extends Controller
     public function update(UpdateContractRequest $request, Contract $contract)
     {
         $contractInstance = Contract::find($contract->id);
+        
         $contractInstance->update($request->all());
 
            if (!is_null($request->subjects)) {

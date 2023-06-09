@@ -61,7 +61,7 @@ return new class extends Migration
             $table->unsignedBigInteger('formpayment_id'); //forma de pagamento
             $table->foreign('formpayment_id')->references('id')->on('payment_methods');
 
-            
+
 
             $table->unsignedBigInteger('creatoruser_id');
             $table->foreign('creatoruser_id')->references('id')->on('users');
@@ -70,9 +70,8 @@ return new class extends Migration
             $table->foreign('editoruser_id')->references('id')->on('users');
             $table->boolean('status');
             $table->string('observation');
- $table->softDeletes();
+            $table->softDeletes();
             $table->timestamps();
-           
         });
     }
 
