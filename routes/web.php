@@ -35,3 +35,4 @@ require __DIR__ . '/logBook.php';
 require __DIR__ . '/contract.php';
 require __DIR__ . '/modality.php';
 require __DIR__ . '/supplier.php';
+require __DIR__ . '/historicalnote.php';

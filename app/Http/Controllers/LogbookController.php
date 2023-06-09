@@ -73,7 +73,6 @@ public function edit(LogBook $logBook)
  */
 public function update(Request $request, LogBook $logBook)
 {
-    $user = auth()->user();
     $logBookInstance = LogBook::find($logBook->id);
     $logBookInstance->update($request->all());
 

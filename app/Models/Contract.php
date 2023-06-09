@@ -79,6 +79,11 @@ class Contract extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function historicalNotes()
+{
+    return $this->hasMany(HistoricalNote::class, 'contract_id');
+}
+
     protected $table = "contracts";
 
     protected $fillable = [

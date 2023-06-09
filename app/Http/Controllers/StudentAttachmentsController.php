@@ -37,7 +37,7 @@ class StudentAttachmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, StudentAttachments $studentAttachment)
+    public function store(Request $request)
     {
         $user = auth()->user();
         $studentAttachmentData = $request->all();
