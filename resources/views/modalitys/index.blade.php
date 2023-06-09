@@ -16,7 +16,7 @@
         </div>
         <div class="row justify-content-center align-items-center g-2 mb-3">
             <div class="col">
-                <a href="{{route('modalities.create')}}" name="download" id="download" class="btn float-end btn-primary" style="color:white; margin-right:1rem; font-size:13px;">Adicionar Modalidade</a>
+                <a href="{{route('modalitys.create')}}" name="download" id="download" class="btn float-end btn-primary" style="color:white; margin-right:1rem; font-size:13px;">Adicionar Modalidade</a>
             </div>
         </div>
 
@@ -47,7 +47,7 @@
                     {{-- </tr> --}}
                 </thead>
                 <tbody>
-                    @forelse ($modalities as $modality )
+                    @forelse ($modalitys as $modality )
                         <tr class="">
                             <td scope="row">{{$modality->id}}</td>
                             <td scope="row">{{$modality->name}}</td>
@@ -59,7 +59,7 @@
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-start" aria-labelledby="triggerId">
-                                        <a class="dropdown-item" href="{{route('modalities.show',['modality'=>$modality->id])}}">Visualizar</a>
+                                        <a class="dropdown-item" href="{{route('modalitys.show',['modality'=>$modality->id])}}">Visualizar</a>
                                         {{-- <a class="dropdown-item" href="#">Visualizar</a> --}}
                                     </div>
                                 </div>                                

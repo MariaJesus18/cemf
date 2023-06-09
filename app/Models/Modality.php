@@ -9,10 +9,16 @@ class Modality extends Model
 {
     use HasFactory;
 
-    protected $table = "modalities";
+    protected $table = "modalitys";
 
     protected $fillable = [
         'occurrencetype',
         'name',
     ];
+
+    public function contracts()
+    {
+        return $this->belongsToMany(Contract::class);
+    }
+
 }
