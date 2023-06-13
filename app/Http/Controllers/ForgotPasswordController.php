@@ -41,13 +41,24 @@ class ForgotPasswordController extends Controller
             'email'=>$request->email,
             'token'=>$token,
         ]);
-
-        Mail::send('auth.mail.forgetPasswordPage', ['token' => $token], function($message) use($request){
+        
+        Mail::send('auth.mail.forgetPasswordLink', ['token' => $token], function($message) use($request){
             $message->to($request->email);
             $message->subject('Reset Password');
         });
-
+        
         return back()->with('message', 'Uma mensagem para contendo o link de reset foi enviada para este email');
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Password_Reset  $password_Reset
+     * @return \Illuminate\Http\Response
+     */
+    public function showResetPasswordForm()
+    {
+        return view('auth.mail.forgetPasswordLink');
     }
 
     /**
@@ -56,53 +67,30 @@ class ForgotPasswordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function submitResetPasswordForm(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Password_Reset  $password_Reset
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Password_Reset $password_Reset)
-    {
-        //
-    }
+        $updatePassword = DB::table('password_resets')
+                            ->where([
+                              'email' => $request->email, 
+                              'token' => $request->token
+                            ])
+                            ->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Password_Reset  $password_Reset
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Password_Reset $password_Reset)
-    {
-        //
-    }
+        if(!$updatePassword){
+            return back()->withInput()->with('error', 'Invalid token!');
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Password_Reset  $password_Reset
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Password_Reset $password_Reset)
-    {
-        //
-    }
+        $user = User::where('email', $request->email)
+                    ->update(['password' => Hash::make($request->password)]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Password_Reset  $password_Reset
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Password_Reset $password_Reset)
-    {
-        //
+        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+
+        return redirect('/login')->with('message', 'Your password has been changed!');
     }
 }
