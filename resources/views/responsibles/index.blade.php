@@ -22,7 +22,7 @@
                 Contas</button>
             <!-- Modal -->
             <div class="modal fade" id="caixa_lancamento" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar Conta</h5>
@@ -92,7 +92,7 @@
 
 
                                                     <div class="mb-3">
-                                                        <label for="invoicing" class="form-label">Parentesco</label>
+                                                        <label for="invoicing" class="form-label">Faturamento</label>
                                                         <select class="form-select" id="invoicing" aria-label="Default select example" name="invoicing">
                                                         <option value="Sim">Sim</option>
                                                             <option value="Não">Não</option>
@@ -198,8 +198,8 @@
                     <td scope="row">{{ $responsibles->id }}</td>
                     <td scope="row">{{ $responsibles->name }}</td>
                     <td scope="row">{{ $responsibles->relative }}</td>
-                    <td scope="row">{{ $userCreator['id']}}</td>
-
+                    <td scope="row">{{ $responsibles->invoicing }}</td>
+                
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

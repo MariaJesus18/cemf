@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ContractDiscipline extends Model
+class ContractSubject extends Model
 {
     use HasFactory;
 
     /**
-     * Get the user that owns the ContractDiscipline
+     * Get the user that owns the ContractSubject
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -26,7 +26,7 @@ class ContractDiscipline extends Model
         return $this->belongsTo(Subject::class);
     }
 
-    protected $table ="contract_disciplines";
+    protected $table ="contract_subject";
 
     protected $fillable =[
         'contract_id',

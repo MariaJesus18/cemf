@@ -5,10 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
     use HasFactory;
+
+    
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'name',
@@ -22,8 +27,9 @@ class Student extends Model
         'neighborhood',
         'complement',
         'city',
-        'state',
+        'uf',
         'observation',
+        'email',
         'creatoruser_id',
         'editoruser_id',
         'status',
@@ -34,6 +40,11 @@ class Student extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+
+    public function responsible(): BelongsTo
+    {
+        return $this->belongsTo(Responsible::class);
+    }
     public function creatoruser(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -42,5 +53,9 @@ class Student extends Model
     public function editoruser(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    public function student_attachments(): BelongsTo
+    {
+        return $this->belongsTo(StudentAttachments::class);
     }
 }

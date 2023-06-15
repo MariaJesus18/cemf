@@ -19,10 +19,9 @@ return new class extends Migration
             $table->foreign('student')->references('id')->on('students');
             $table->string('title');
             $table->string('file');
-            $table->dateTime('dateInclusion');
-            $table->unsignedBigInteger('id_userCreator'); //idid_userCreator
-            $table->foreign('id_userCreator')->references('id')->on('users');
-
+            $table->unsignedBigInteger('creatoruser_id'); //idid_userCreator
+            $table->foreign('creatoruser_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

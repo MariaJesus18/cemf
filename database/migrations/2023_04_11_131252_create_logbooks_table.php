@@ -22,12 +22,11 @@ return new class extends Migration
             $table->string('title');
             $table->string('observation');
 
-            $table->unsignedBigInteger('id_userCreator'); //idid_userCreator
-            $table->foreign('id_userCreator')->references('id')->on('users');
-
-            $table->dateTime('dateInclusion');
+            $table->unsignedBigInteger('creatoruser_id'); //idid_userCreator
+            $table->foreign('creatoruser_id')->references('id')->on('users');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

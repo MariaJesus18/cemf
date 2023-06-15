@@ -20,44 +20,44 @@ return new class extends Migration
 
             $table->foreignId('contract_id')->constrained('contracts')->onDeleteCascade('cascade');
 
-            $table->unsignedBigInteger('student'); //idstudent
+            $table->unsignedBigInteger('student')->nullable(); //idstudent
             $table->foreign('student')->references('id')->on('students');
 
-            $table->unsignedBigInteger('supplier'); //idsupplier
+            $table->unsignedBigInteger('supplier')->nullable(); //idsupplier
             $table->foreign('supplier')->references('id')->on('suppliers');
 
-            $table->unsignedBigInteger('cash_accounts'); //idocashAccount
+            $table->unsignedBigInteger('cash_accounts')->nullable(); //idocashAccount
             $table->foreign('cash_accounts')->references('id')->on('cash_accounts');
 
-            $table->unsignedBigInteger('type_releases'); //idtype
+            $table->unsignedBigInteger('type_releases')->nullable(); //idtype
             $table->foreign('type_releases')->references('id')->on('type_releases');
 
-            $table->unsignedBigInteger('category'); //idcategory
+            $table->unsignedBigInteger('category')->nullable(); //idcategory
             $table->foreign('category')->references('id')->on('launch_categorys');
 
-            $table->unsignedBigInteger('payment_methods'); //idformapgto
+            $table->unsignedBigInteger('payment_methods')->nullable(); //idformapgto
             $table->foreign('payment_methods')->references('id')->on('payment_methods');
 
-            $table->date('expiration');
-            $table->date('lowDate');
-            $table->unsignedBigInteger('originalValue');
-            $table->unsignedBigInteger('surcharge');
-            $table->boolean('discountType');
-            $table->unsignedBigInteger('discount');
-            $table->unsignedBigInteger('postingAmount');
-            $table->unsignedBigInteger('barcode');
-            $table->string('historico');
-            $table->string('installment');
+            $table->date('expiration')->nullable();
+            $table->date('lowDate')->nullable();
+            $table->unsignedBigInteger('originalValue')->nullable();
+            $table->unsignedBigInteger('surcharge')->nullable();
+            $table->boolean('discountType')->nullable();
+            $table->unsignedBigInteger('discount')->nullable();
+            $table->unsignedBigInteger('postingAmount')->nullable();
+            $table->unsignedBigInteger('barcode')->nullable();
+            $table->string('historico')->nullable();
+            $table->string('installment')->nullable();
 
-            $table->unsignedBigInteger('id_creatorUser'); //id_creatorUser
+            $table->unsignedBigInteger('id_creatorUser')->nullable(); //id_creatorUser
             $table->foreign('id_creatorUser')->references('id')->on('users');
 
-            $table->unsignedBigInteger('id_userChange'); //id_userChange
+            $table->unsignedBigInteger('id_userChange')->nullable(); //id_userChange
             $table->foreign('id_userChange')->references('id')->on('users');
 
-            $table->dateTime('dateCreated');
-            $table->dateTime('changeDate');
-            $table->boolean('status'); //atiov | inativo
+            $table->dateTime('dateCreated')->nullable();
+            $table->dateTime('changeDate')->nullable();
+            $table->boolean('status')->nullable(); //atiov | inativo
 
             $table->timestamps();
         });

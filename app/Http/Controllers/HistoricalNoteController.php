@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\HistoricalNote;
 use Illuminate\Http\Request;
+use App\Models\Contract;
+use App\Models\Period;
+use App\Models\School;
+use App\Models\Serie;
+use App\Models\Student;
+use App\Models\Subject;
 
 class HistoricalNoteController extends Controller
 {
@@ -14,7 +20,17 @@ class HistoricalNoteController extends Controller
      */
     public function index()
     {
-        //
+       
+            return view('historicalNote.index', [
+                'contracts' => Contract::all(),
+                'students' => Student::all(),
+                'schools' => School::all(),
+                'series' => Serie::all(),
+                'periods' => Period::all(),
+                'subjects' => Subject::all(),
+                'historicalnotes' => HistoricalNote::all(),
+            ]);
+        
     }
 
     /**
@@ -35,7 +51,13 @@ class HistoricalNoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+        $requestData = $request->all();
+        $requestData['creatoruser_id'] = $user->id;
+        $requestData['status'] = true;
+       HistoricalNote::create($requestData);
+        
+        return redirect('/historicalNotes');
     }
 
     /**
@@ -57,7 +79,15 @@ class HistoricalNoteController extends Controller
      */
     public function edit(HistoricalNote $historicalNote)
     {
-        //
+        return view('historicalNote.edit', [
+           'historicalnote' => HistoricalNote::find($historicalNote->id),
+            'contracts' => Contract::all(),
+            'students' => Student::all(),
+            'schools' => School::all(),
+            'series' => Serie::all(),
+            'periods' => Period::all(),
+            'subjects' => Subject::all(),
+        ]);
     }
 
     /**
@@ -69,7 +99,13 @@ class HistoricalNoteController extends Controller
      */
     public function update(Request $request, HistoricalNote $historicalNote)
     {
-        //
+        $user = auth()->user();
+        $requestData = $request->all();
+        $requestData['editoruser_id'] = $user->id;
+        
+        $historicalNote->update($requestData);
+    
+        return redirect('/historicalNotes');
     }
 
     /**
@@ -80,6 +116,8 @@ class HistoricalNoteController extends Controller
      */
     public function destroy(HistoricalNote $historicalNote)
     {
-        //
+        $historicalNote->delete();
+
+        return redirect('/historicalNotes');
     }
 }

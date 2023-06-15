@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contract extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
 
 
     /**
@@ -21,9 +23,9 @@ class Contract extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function modalitie(): BelongsTo
+    public function modality(): BelongsTo
     {
-        return $this->belongsTo(Modalities::class);
+        return $this->belongsTo(Modality::class);
     }
 
     public function unit(): BelongsTo
@@ -62,9 +64,9 @@ class Contract extends Model
         return $this->belongsTo(FormPayment::class);
     }
 
-    public function subject(): BelongsTo
+    public function subjects()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsToMany(Subject::class);
     }
 
     public function creatoruser(): BelongsTo
@@ -77,22 +79,30 @@ class Contract extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function historicalNotes()
+{
+    return $this->hasMany(HistoricalNote::class, 'contract_id');
+}
+
     protected $table = "contracts";
 
     protected $fillable = [
         'studend_id',
-        'modalitiy_id',
+        'modality_id',
         'unit_id',
         'covenant_id',
         'value',
+        'discount',
         'school_id',
         'firstpaymentdate',
-        'responsiblepayment_id',
+        'responsible_id',
         'shift_id',
         'serie_id',
-        // 'subscription_id',
+        'registrationFee', 
         'formpayment_id',
-        'subject_id',
+         
+        'observation',
+        'status',
         'creatoruser_id',
         'editoruser_id',
     ];

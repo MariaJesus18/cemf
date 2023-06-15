@@ -12,9 +12,11 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Student $Student)
     {
-        return view('students.index', ['students' => Student::all()]);
+        return view('students.index', [
+            'students' => Student::all(),
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create1');
+        //
     }
 
     /**
@@ -33,18 +35,24 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Student $Student)
     {
-        //
+        //  $userCreator = User::where('id', $Student->creatoruser_id)->first()->toArray(); 
+        $user = auth()->user();
+        $Student = $request->all();
+        $Student['creatoruser_id'] = $user->id;
+        $Student['status'] = true;
+        Student::create($Student);
+        return redirect('/students');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Student $Student)
     {
         //
     }
@@ -52,34 +60,49 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Student $Student)
     {
-        //
+        return view('students.edit', [
+            'student' => Student::find($Student->id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Student $Student)
     {
-        //
+        $user = auth()->user();
+        $Student = $Student::find($Student->id);
+        $Student['editoruser_id'] = $user->id;
+        $Student->update($request->all());
+
+        return redirect('/students');
+
+
+        // $Student = $request->all();
+
+        // Student::create($Student);
+        // return redirect('/Students');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Student $Student)
     {
-        //
+        $Student->delete();
+
+        return redirect('/students');
     }
 }

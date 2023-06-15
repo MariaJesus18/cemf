@@ -14,7 +14,7 @@ class ModalityController extends Controller
      */
     public function index()
     {
-        return view('modalities.index', ['modalities' => Modality::all()]);
+        return view('modalitys.index', ['modalitys' => Modality::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class ModalityController extends Controller
      */
     public function create()
     {
-        return view('modalities.create');
+        return view('modalitys.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class ModalityController extends Controller
     public function store(Request $request)
     {
         Modality::create($request->all());
-        return redirect(url('modalities'));
+        return redirect(url('modalitys'));
     }
 
     /**
@@ -47,7 +47,7 @@ class ModalityController extends Controller
      */
     public function show(Modality $modality)
     {
-        return view('modalities.show', ['modality' => $modality]);
+        return view('modalitys.show', ['modality' => $modality]);
     }
 
     /**
@@ -71,7 +71,7 @@ class ModalityController extends Controller
     public function update(Request $request, Modality $modality)
     {
         $modality->update($request->all());
-        return redirect(url('modalities'));
+        return redirect(url('modalitys'));
     }
 
     /**
@@ -83,6 +83,6 @@ class ModalityController extends Controller
     public function destroy(Modality $modality)
     {
         $modality->delete();
-        return redirect(url('modalities'));
+        return redirect(url('modalitys'));
     }
 }
