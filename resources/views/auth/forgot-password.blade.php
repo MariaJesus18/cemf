@@ -61,7 +61,7 @@
                             </div>
                             <!-- /Logo -->
 
-                            <form id="formAuthentication" class="mb-3" action="{{route('forget.password.post')}}" method="POST">
+                            <form id="formAuthentication" class="mb-3" action="{{route('password.email')}}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="email" class="form-label">E-mail</label>
@@ -82,6 +82,7 @@
 
         </div>
     </div>
+
 
 
     <!-- Core JS -->

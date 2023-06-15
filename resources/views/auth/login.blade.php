@@ -93,7 +93,7 @@
                                 </div> -->
 
                             </form>
-                            <a href="{{route('forget.password.get')}}" class="float-end">
+                            <a href="{{route('password.request')}}" class="float-end">
                                 <small>Esqueceu sua senha?</small>
                             </a>
 
