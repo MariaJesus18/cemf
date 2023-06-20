@@ -2,4 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('relatorios/index', 'reports.index');
+Route::middleware(['auth'],['emailVerify'])->group(function () {
+    Route::view('relatorios/index', 'reports.index');
+});
+

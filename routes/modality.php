@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModalityController;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'],['emailVerify'])->group(function () {
     Route::resource('modalitys', ModalityController::class);
 
     Route::controller(ModalityController::class)->group(function () {

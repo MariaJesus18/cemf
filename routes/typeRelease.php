@@ -11,7 +11,7 @@ use App\Http\Controllers\TypeReleaseController;
 // Route::put('tipoLancamentos/{typeRelease}', [TypeReleaseController::class, 'update'])->name('typeReleases.update');
 // Route::delete('tipoLancamentos/{typeRelease}', [TypeReleaseController::class, 'destroy'])->name('typeReleases.destroy');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'],['emailVerify'])->group(function () {
     Route::resource('typeReleases', TypeReleaseController::class);
 
     Route::controller(TypeReleaseController::class)->group(function () {

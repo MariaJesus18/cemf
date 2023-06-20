@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaunchAttachmentsController;
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'],['emailVerify'])->group(function () {
     Route::resource('launchAttachments', LaunchAttachmentsController::class);
 
     Route::controller(LaunchAttachmentsController::class)->group(function () {

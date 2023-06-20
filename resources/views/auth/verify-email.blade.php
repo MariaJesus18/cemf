@@ -53,14 +53,37 @@
                     <div class="card" style=" width: 37.5rem; height: 43.125rem;padding: 2rem;">
                         <div class="card-body">
                             <!-- Logo -->
+
                             <div class="app-brand justify-content-center">
                                 <div class="app-brand-logo">
                                     <img src="https://t9007041908.p.clickup-attachments.com/t9007041908/dc01b404-c35b-40a7-b1f6-5349e2788815/LOGO%20CEMF.png"
                                         style="Width: 337px;  Height: 136px;">
                                 </div>
-
                             </div>
+                            
                             <!-- /Logo -->
+
+                            <div class="row">
+                                <div class="col text-center">
+
+                                    <div class="row">
+                                        <p>Antes de continuar gostaríamos de validar o seu email!</p>
+                                        <p>Ao clicar no botão abaixo, será enviado um link para o seu email, onde você poderá validar o seu email</p>
+                                    </div>
+
+                                    <form action="{{url('email/verification-notification')}}" method="POST">
+                                        @CSRF
+                                        <button class="btn btn-primary" >Enviar</button>
+                                    </form>
+                                    
+                                    <a class="btn btn-primary mt-4" href="/">Voltar</a>
+
+                                    <br>
+
+                                    <a class="btn btn-primary mt-4" href="{{url('/logout')}}">Sair</a>
+                                    
+                                </div>    
+                            </div>
 
                         </div>
                     </div>

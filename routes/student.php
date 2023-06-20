@@ -10,7 +10,7 @@ use App\Http\Controllers\StudentController;
 
 // Route::resource('students', StudentController::class);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'],['emailVerify'])->group(function () {
     Route::resource('students', StudentController::class);
 
     Route::controller(StudentController::class)->group(function () {
