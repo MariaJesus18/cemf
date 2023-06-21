@@ -23,6 +23,11 @@ class Contract extends Model
         return $this->belongsTo(Student::class);
     }
 
+    public function launchs()
+    {
+        return $this->hasMany(Launch::class);
+    }
+
     public function modality(): BelongsTo
     {
         return $this->belongsTo(Modality::class);

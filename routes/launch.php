@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LaunchController;
 
 
 Route::middleware(['auth'],['emailVerify'])->group(function () {
