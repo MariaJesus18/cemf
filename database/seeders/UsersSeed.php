@@ -50,8 +50,6 @@ class UsersSeed extends Seeder
         ]);
 
 
-
-
         $maria = User::create([
             'name' => "Maria de Jesus",
             'email' => "maria@maria",

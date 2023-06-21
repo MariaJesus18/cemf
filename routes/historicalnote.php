@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HistoricalNoteController;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'],['emailVerify'])->group(function () {
     Route::resource('historicalNotes', HistoricalNoteController::class);
 
     Route::controller(HistoricalNoteController::class)->group(function () {

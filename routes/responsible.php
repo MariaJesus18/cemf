@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResponsibleController;
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'],['emailVerify'])->group(function () {
     Route::resource('responsibles', ResponsibleController::class);
 
     Route::controller(ResponsibleController::class)->group(function () {
