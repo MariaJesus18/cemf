@@ -19,8 +19,11 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="" class="form-label">Titulo</label>
-                        <input type="text" class="form-control" name="title" id="" value="" required aria-describedby="helpId" placeholder="Titulo">
+                        <input type="text" class="form-control" name="title" id="" value="{{$typeRelease->title}}" required aria-describedby="helpId" placeholder="Titulo">
                     </div>
+                    @error('title')
+                        <span class="badge bg-warning">{{$message}}</span>
+                    @enderror
                     <button class="btn btn-primary">Atualizar</button>
                 </div>
             </div>

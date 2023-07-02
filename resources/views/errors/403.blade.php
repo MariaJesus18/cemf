@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/errors.css">
-    <title>Error 404</title>
+    <title>Error 403</title>
     <meta name="robots" content="noindex, follow">
 </head>
 <body>

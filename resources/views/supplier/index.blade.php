@@ -23,8 +23,18 @@
         </div> --}}
     </div>
     <div class="col">
+        
+        <!-- Caso tenha erros de validação, ele deve chamar o modal e mostrar os erros -->
+        @if(Session::has('errors'))
+        <script >
+            window.onload=function(){
+                mostrar_modal();   
+            }
+            </script>
+        @endif
+
         <!-- Botão para acionar modal -->
-        <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem; font-size:13px;" data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="mostrar_modal()">Incluir Fornecedor +</button>
+        <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem; font-size:13px;" data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="mostrar_modal()">Incluir Fornecedor</button>
         <!--modal -->
         <div class="modal fade" id="caixa_lancamento" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
@@ -72,7 +82,7 @@
 
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlSelect1" class="form-label">Nome </label>
-                                                        <input type="text" name="name" id="name" class="form-control">
+                                                        <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
                                                     </div>
 
                                                     <div class="mb-3">
@@ -168,6 +178,7 @@
         <!-- /modal -->
     </div>
 </div>
+
 
 
 <div class="row ">

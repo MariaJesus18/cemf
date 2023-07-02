@@ -106,8 +106,7 @@
             <li class="menu-item">
               <!-- configurar link -->
               <a
-                href=""
-                target="_blank"
+                href="/launchAttachments"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons fa-solid fa-money-bill-trend-up"></i>
@@ -161,11 +160,11 @@
                 <div data-i18n="Layouts">Globais</div>
               </a>
     
-              @switch(Auth::user()->type)
+              <!-- @switch(Auth::user()->type)
               @case(0)
                   @break
                   
-              @case(1 || 2)
+              @case(1 || 2) -->
         
                   <ul class="menu-sub">                
                       <li class="menu-item">
@@ -186,11 +185,11 @@
                         </ul>
                       </li>
                   </ul>
-                  @break
+                  <!-- @break
       
               @default
                   
-              @endswitch
+              @endswitch -->
       
 
               <ul class="menu-sub">                
@@ -203,8 +202,8 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="" class="menu-link">
-                        <div data-i18n="Without navbar">Ação</div>
+                      <a href="{{url('/suppliers')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Fornecedores</div>
                       </a>
               <!-- configurar link -->
                       <a href="" class="menu-link">
@@ -268,7 +267,7 @@
 
                     <ul class="menu-sub">
               <!-- configurar link -->
-                      <a href="{{url('modalities')}}" class="menu-link">
+                      <a href="{{url('modalitys')}}" class="menu-link">
                         <div data-i18n="Without navbar">Modalidades</div>
                       </a>
               <!-- configurar link -->
