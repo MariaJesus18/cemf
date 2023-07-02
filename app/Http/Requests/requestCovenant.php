@@ -28,17 +28,4 @@ class requestCovenant extends FormRequest
             'discount'=>'integer|required'
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'name.string'=>'Insira um nome para este convênio',
-            'name.min'=>'Insira um nome com no mínimo 5 letras',
-            'name.max'=>'O máximo desse campo é de 256 letras',
-            'name.required'=>'Insira um nome para este convênio',
-
-            'discount.integer'=>'Insira um valor numérico',
-            'discount.required'=>'Este campo precisa ser preenchido'
-        ];
-    }
 }

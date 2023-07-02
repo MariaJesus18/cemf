@@ -29,13 +29,4 @@ class requestLaunchAttachments extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'title.required'=>'Insira um título',
-            'title.min'=>'O título deve conter no mínimo 5 letras',
-            'title.max'=>'O máximo de letras é de 256',
-            'occurrencetype.required'=>'Insira um tipo de ocorrênica'
-        ];
-    }
 }

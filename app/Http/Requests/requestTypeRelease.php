@@ -27,13 +27,4 @@ class requestTypeRelease extends FormRequest
             'title'=>'required|min:5|max:256'
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'title.required'=>'Insira um título',
-            'title.min'=>'Insira um título com no mínimo 5 letras',
-            'title.max'=>'O máximo de letras é de 256'
-        ];
-    }
 }
