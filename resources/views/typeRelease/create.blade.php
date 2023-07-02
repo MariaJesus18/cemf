@@ -20,9 +20,12 @@
                         <div class="mb-3">
                             <label for="nome" class="form-label">Titulo</label>
                             <input type="text" class="form-control" name="title" id="" value="" required aria-describedby="helpId" placeholder="Titulo">
+                            @error('title')
+                                <span class="badge bg-warning">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="row">
-                            <div class="col text-center">
+                            <div class="col">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>

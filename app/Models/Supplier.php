@@ -27,9 +27,7 @@ class Supplier extends Model
         'city',
         'uf',
         'observation',
-        'creatoruser_id',
-        'editoruser_id',
-        'status',
+        'status'
     ];
 
     public function contract_id(): BelongsTo

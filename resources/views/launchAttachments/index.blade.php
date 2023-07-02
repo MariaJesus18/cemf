@@ -7,6 +7,7 @@
 @endsection
 
 @section('layout-content')
+
 <div class="container-xxl  ">
 
     <div class="row justify-content-center align-items-center g-2">
@@ -41,16 +42,18 @@
 
                                                     <div class="mb-3">
                                                         <label class="form-label" for="basic-default-company">Anexo</label>
-                                                        <input type="file" class="form-control-file" id="image" placeholder="anexo" name="file" required>
+                                                        <input type="file" class="form-control-file" id="image" placeholder="anexo" name="file" required value="{{old('file')}}">
+                                                        @error('file')
+                                                            <span class="badge bg-warning">{{$message}}</span>
+                                                        @enderror
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label" for="basic-default-company">Titulo</label>
-                                                        <input type="text" class="form-control" id="basic-default-company" placeholder="Nome" name="title" required>
+                                                        <input type="text" class="form-control" id="basic-default-company" placeholder="Nome" name="title" required value="{{old('title')}}">
+                                                        @error('title')
+                                                            <span class="badge bg-warning">{{$message}}</span>
+                                                        @enderror
                                                     </div>
-
-                                         
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -73,7 +76,14 @@
     </div>
 </div>
 
-
+<!-- Caso tenha erros de validação, ele deve chamar o modal e mostrar os erros -->
+@if(Session::has('errors'))
+    <script >
+        window.onload=function(){
+            mostrar_modal();   
+        }
+    </script>
+@endif
 
 <div class="row ">
     <div class="col-8">
@@ -142,4 +152,5 @@
 
     }
 </script>
+
 @endsection

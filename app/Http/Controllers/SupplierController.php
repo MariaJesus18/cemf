@@ -32,12 +32,7 @@ class SupplierController extends Controller
     }
     public function store(Request $request)
     {
-        $user = auth()->user();
-        $requestData = $request->all();
-        $requestData['creatoruser_id'] = $user->id;
-        $requestData['status'] = true;
-        $createdsupplier = Supplier::create($requestData);
-        
+        Supplier::create($request->all());   
         return redirect('/suppliers');
     }
     

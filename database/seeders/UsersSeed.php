@@ -22,7 +22,7 @@ class UsersSeed extends Seeder
             'email' => "admin@admin",
             'password' => Hash::make('123123123'),
             'status' => true,
-            'type' => 1,
+            // 'type' => 1,
             'telephone' => "123123123",
         ]);
         Administrator::create([
@@ -36,28 +36,32 @@ class UsersSeed extends Seeder
             'email' => "lucas@lucas",
             'password' => Hash::make('123123123'),
             'status' => true,
-            'type' => 0,
+            // 'type' => 0,
             'telephone' => "123123123",
         ]);
 
-        User::create([
+        $gabriel = User::create([
             'name' => "Gabriel",
-            'email' => "gabriel@gabriel",
+            'email' => "gabriel.costa1@escolar.ifrn.edu.br",
             'password' => Hash::make('123123123'),
             'status' => false,
-            'type' => 2,
+            // 'type' => 2,
             'telephone' => "123123123",
         ]);
 
+        Administrator::create([
+            'user_id' => $gabriel->id,
+        ]);
 
         $maria = User::create([
             'name' => "Maria de Jesus",
             'email' => "maria@maria",
             'password' => Hash::make('123123123'),
             'status' => true,
-            'type' => 1,
+            // 'type' => 1,
             'telephone' => "123123123",
         ]);
+        
         Administrator::create([
             'user_id' => $maria->id,
         ]);

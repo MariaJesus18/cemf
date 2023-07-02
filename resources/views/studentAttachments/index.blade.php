@@ -80,8 +80,6 @@
     </div>
 </div>
 
-
-
 <div class="row ">
     <div class="col-8">
         <form action="" class="form-group ">

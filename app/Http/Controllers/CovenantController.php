@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Covenant;
 use Illuminate\Http\Request;
+use App\Models\Covenant;
+use App\Http\Requests\requestCovenant;
 
 class CovenantController extends Controller
 {
@@ -14,7 +15,7 @@ class CovenantController extends Controller
      */
     public function index()
     {
-        return view('convenants.index', ['covenants' => Covenant::all()]);
+        return view('covenants.index', ['covenants' => Covenant::all()]);
     }
 
     /**
@@ -24,7 +25,7 @@ class CovenantController extends Controller
      */
     public function create()
     {
-        return view('convenants.create');
+        return view('covenants.create');
     }
 
     /**
@@ -33,7 +34,7 @@ class CovenantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(requestCovenant $request)
     {
         Covenant::create($request->all());
         return redirect(url('covenants'));
@@ -47,18 +48,7 @@ class CovenantController extends Controller
      */
     public function show(Covenant $covenant)
     {
-        return view('convenants.show', ['covenant' => $covenant]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Covenant  $covenant
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Covenant $covenant)
-    {
-        //
+        return view('covenants.show', ['covenant' => $covenant]);
     }
 
     /**
@@ -68,7 +58,7 @@ class CovenantController extends Controller
      * @param  \App\Models\Covenant  $covenant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Covenant $covenant)
+    public function update(requestCovenant $request, Covenant $covenant)
     {
         $covenant->update($request->all());
         return redirect(url('covenants'));

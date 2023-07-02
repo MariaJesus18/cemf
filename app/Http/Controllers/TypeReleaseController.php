@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TypeRelease;
 use Illuminate\Http\Request;
+use App\Models\TypeRelease;
+use App\Http\Requests\requestTypeRelease;
 
 class TypeReleaseController extends Controller
 {
@@ -24,7 +25,7 @@ class TypeReleaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('typeRelease.create');
     }
@@ -35,23 +36,12 @@ class TypeReleaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(requestTypeRelease $request)
     {
         TypeRelease::create($request->all());
 
         return redirect(url('typeReleases'));
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TypeRelease  $typeRelease
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TypeRelease $typeRelease)
-    {
-        //
     }
 
     /**
@@ -63,7 +53,7 @@ class TypeReleaseController extends Controller
     public function edit(TypeRelease $typeRelease)
     {
         return view('typeRelease.edit', [
-            'typeRelease' => TypeRelease::find($typeRelease->id)
+            'typeRelease' =>$typeRelease
         ]);
     }
 
@@ -74,12 +64,9 @@ class TypeReleaseController extends Controller
      * @param  \App\Models\TypeRelease  $typeRelease
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TypeRelease $typeRelease)
-    {
-        $typeRelease = TypeRelease::find($typeRelease->id);
-
+    public function update(requestTypeRelease $request, TypeRelease $typeRelease)
+    {   
         $typeRelease->update($request->all());
-
         return redirect('/typeReleases');
     }
 

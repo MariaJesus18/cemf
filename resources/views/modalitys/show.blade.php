@@ -23,6 +23,9 @@
                 <label for="" class="form-label">Nome da Modalidade</label>
                 <input type="text"
                 class="form-control" name="name" id="" value="{{$modality->name}}" required aria-describedby="helpId" placeholder="Nome da Modalidade" required>
+                @error('name')
+                    <span class="badge bg-warning">{{$message}}</span>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -34,6 +37,9 @@
                     <option value="Trimestral">Trimestral</option>
                 </select>
             </div>
+            @error('occurrencetype')
+                <span class="badge bg-warning">{{$message}}</span>
+            @enderror
     
             <button class="btn btn-primary">Salvar</button>        
         </div>

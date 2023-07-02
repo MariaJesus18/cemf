@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Modality;
 use Illuminate\Http\Request;
+use App\Models\Modality;
+use App\Http\Requests\requestModalitys;
 
 class ModalityController extends Controller
 {
@@ -33,7 +34,7 @@ class ModalityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(requestModalitys $request)
     {
         Modality::create($request->all());
         return redirect(url('modalitys'));
@@ -51,24 +52,13 @@ class ModalityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Modality  $modality
-     * @return \Illuminate\Http\Response    
-     */
-    public function edit(Modality $modality)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Modality  $modality
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modality $modality)
+    public function update(requestModalitys $request, Modality $modality)
     {
         $modality->update($request->all());
         return redirect(url('modalitys'));

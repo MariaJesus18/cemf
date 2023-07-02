@@ -2,7 +2,7 @@
 
 
 @section('layout-header')
-<title>Unidades</title>
+<title>Convênios</title>
 @endsection
 
 @section('layout-content')
