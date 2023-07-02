@@ -28,13 +28,4 @@ class requestModalitys extends FormRequest
             'occurrencetype'=>'required|'
         ];
     }
-    public function messages()
-    {
-        return [
-            'name.required'=>'Insira um nome para a ocorrência',
-            'name.min'=>'O nome deve conter no mínimo 5 letras',
-            'name.max'=>'O máximo de letras é de 256',
-            'ocyee.required'=>'Selecione o tipo de ocorrência'
-        ];
-    }
 }
