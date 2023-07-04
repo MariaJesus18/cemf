@@ -143,7 +143,7 @@
               <!-- configurar link -->
               <a
                 href=""
-                target="_blank"
+                target=""
                 class="menu-link"
               >
 
