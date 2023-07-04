@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class requestSuppliers extends FormRequest
+class requestSupplierUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class requestSuppliers extends FormRequest
             'cnpj'=>'integer|required',
             'telephone1'=>'integer|required',
             'telephone2'=>'integer|required',
-            'email'=>'email|unique:suppliers|min:5|max:256',
+            'email'=>'email|min:5|max:256',
             'cep'=>'integer|required',
             'road'=>'required|min:5|max:256',
             'number'=>'integer|required',
