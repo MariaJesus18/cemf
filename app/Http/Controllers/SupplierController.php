@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contract;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use App\Http\Requests\requestSuppliers;
+use App\Http\Requests\requestSupplierUpdate;
 
 class SupplierController extends Controller
 {
@@ -28,16 +30,14 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        // ???
     }
-    public function store(Request $request)
+
+    public function store(requestSuppliers $request)
     {
         Supplier::create($request->all());   
         return redirect('/suppliers');
     }
-    
-    
-    
     /**
      * Show the form for editing the specified resource.
      *
@@ -48,12 +48,11 @@ class SupplierController extends Controller
     {
         
         return view('supplier.edit', [
-            'suppliers' => supplier::find($supplier->id),
+            'supplier' => $supplier,
             'contracts' => Contract::all(),
         ]);
     
     }
-    
     
     /**
      * Update the specified resource in storage.
@@ -62,17 +61,9 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, supplier $supplier)
-    {
-        $supplierInstance = supplier::find($supplier->id);
-        
-        $supplierInstance->update($request->all());
-
-        $user = auth()->user();
-        $supplier = $supplier::find($supplier->id);
-        $supplier['editoruser_id'] = $user->id;
+    public function update(requestSupplierUpdate $request, supplier $supplier)
+    {        
         $supplier->update($request->all());
-    
         return redirect('/suppliers');
     }
     
@@ -85,7 +76,6 @@ class SupplierController extends Controller
         public function destroy(supplier $supplier)
         {
             $supplier->delete();
-    
             return redirect('/suppliers');
         }
 }

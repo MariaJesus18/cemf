@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('contract_id')->default(1);//temporário
-            $table->foreign('contract_id')->references('id')->on('contracts');
+            // $table->unsignedBigInteger('contract_id');
+            // $table->foreign('contract_id')->references('id')->on('contracts');
             $table->string('typeHolder');
             $table->string('name');
             $table->unsignedBigInteger('cnpj');
@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('uf');
             $table->string('observation');
 
-            $table->boolean('status')->default(true); //atiov | inativo
+            $table->boolean('status')->default(true); //ativo | inativo
 
             $table->timestamps();
         });
