@@ -19,7 +19,7 @@ return new class extends Migration
           
             $table->unsignedBigInteger('cpf');
             $table->unsignedBigInteger('telephone1');
-            $table->unsignedBigInteger('telephone2');
+            $table->unsignedBigInteger('telephone2')->nullable();
             $table->unsignedBigInteger('cep');
             $table->string('road');
             $table->string('number');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('complement');
             $table->string('city');
             $table->string('uf');
-            $table->string('observation');
+            $table->string('observation')->nullable();
             $table->string('email');
 
             $table->unsignedBigInteger('creatoruser_id');
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->unsignedBigInteger('responsible')->nullable();
             $table->foreign('responsible')->references('id')->on('responsibles');
 
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
 
             $table->timestamps();
             $table->softDeletes();

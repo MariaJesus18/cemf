@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -12,23 +13,25 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Student $Student)
+    public function index(Request $request)
     {
-        return view('students.index', [
-            'students' => Student::all(),
-        ]);
+        // buscador funcionando
+        $search = $request['search'] ?? "";
+
+        if($search != ""){
+            $student = DB::table('students')->where('name','like','%'.$search.'%')->get();
+
+        } else {
+            $student = Student::all();
+        }    
+            
+
+         return view('students.index', [
+             'students' => $student,
+         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -37,25 +40,21 @@ class StudentController extends Controller
      */
     public function store(Request $request, Student $Student)
     {
-        //  $userCreator = User::where('id', $Student->creatoruser_id)->first()->toArray(); 
+        // validações 
+        $request->validate([
+            'name' => 'required|max:70|min:3',
+            'cpf' => 'required|max:11',
+            'email' => 'required',
+            'cep' => 'required'
+        ]);
+        
         $user = auth()->user();
         $Student = $request->all();
         $Student['creatoruser_id'] = $user->id;
-        $Student['status'] = true;
         Student::create($Student);
         return redirect('/students');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Student  $Student
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Student $Student)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,18 +78,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $Student)
     {
-        $user = auth()->user();
-        $Student = $Student::find($Student->id);
-        $Student['editoruser_id'] = $user->id;
-        $Student->update($request->all());
 
+        $Student->update($request->all());
         return redirect('/students');
 
-
-        // $Student = $request->all();
-
-        // Student::create($Student);
-        // return redirect('/Students');
     }
 
     /**
