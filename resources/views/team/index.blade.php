@@ -24,7 +24,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar disciplina
+                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">Adicionar Time
                             </h5>
                             <button style="background-color: transparent; border:none;" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fa-solid fa-xmark"></i>
@@ -45,8 +45,7 @@
                                                 <select name="unit_id" id="units" class="form-select form-select-lg mb-3">
 
                                                     @foreach ($unit as $units)
-                                                    <option value="{{ $units->id }}">{{ $units->name }}
-                                                    </option>
+                                                    <option value="{{ $units->id }}">{{ $units->name}} </option>
                                                     @endforeach
                                                 </select>
 
@@ -116,8 +115,18 @@
             <tbody>
                 @forelse ($team as $teams)
                 <tr class="">
-                    <td scope="row">{{ $teams->user->id }}</td>
-                    <td scope="row">{{ $teams->unit->id }}</td>
+                    @foreach ($user as $users)
+                    @if ($users->id == $teams->user->id)
+                    <td scope="row">{{ $users->name }}</td>
+                    @endif   
+                    @endforeach
+
+                    @foreach ($unit as $units)
+                    @if ($units->id == $teams->unit->id)
+                    <td scope="row">{{ $units->name }}</td>
+                    @endif   
+                    @endforeach
+
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-white" style="border:none;" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
